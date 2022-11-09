@@ -2,13 +2,16 @@
 import AppButton from '@/components/AppButton/index.vue';
 import IconPlus from '@/components/Icons/IconPlus.vue';
 import AppSearch from '@/components/AppSearch/index.vue';
+
+import { useContactStore } from '@/stores/contact'
+const contact = useContactStore()
 </script>
 
 <template>
   <header class="app-header">
     <img alt="Vue logo" class="logo-vue" src="@/assets/logo.svg" width="32" height="32" />
     <img alt="Ubook logo" class="logo-book" src="@/assets/ic-logo.svg" width="148" height="32" />
-    <AppButton class="create-contact" ariaLabel="Botão para criar novo contato" type="secondary">
+    <AppButton v-if="contact.list.length > 0" class="create-contact" ariaLabel="Botão para criar novo contato" type="secondary">
       <IconPlus />
       Criar contato
     </AppButton>
