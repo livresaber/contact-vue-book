@@ -1,16 +1,28 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 
+import { createTestingPinia } from '@pinia/testing'
 import { mount } from '@vue/test-utils'
 import AppHeader from './index.vue'
 
+let wrapper;
+
+
 describe('AppHeader', () => {
-  it('renders AppHeader a vue instance', () => {
-    const wrapper = mount(AppHeader)
+  beforeEach(() => {
+    wrapper = mount(AppHeader, {
+      global: {
+        plugins: [createTestingPinia({
+          createSpy: vi.fn(),
+        })],
+      }
+    })
+  })
+
+  it('renders AppHeader a vue instance', () => {   
     expect(wrapper.exists()).toBeTruthy()
   })
 
   it('renders Logo Vue', () => {
-    const wrapper = mount(AppHeader)
     const logo = wrapper.find('[alt="Vue logo"]')
 
     expect(logo.exists()).toBeTruthy()
@@ -19,7 +31,6 @@ describe('AppHeader', () => {
   })
 
   it('renders Logo Ubook', () => {
-    const wrapper = mount(AppHeader)
     const logo = wrapper.find('[alt="Ubook logo"]')
 
     expect(logo.exists()).toBeTruthy()
