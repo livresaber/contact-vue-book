@@ -14,8 +14,8 @@ describe('AppHeader', () => {
     const logo = wrapper.find('[alt="Vue logo"]')
 
     expect(logo.exists()).toBeTruthy()
-    expect(logo.element.getAttribute('width')).toBe('32')
-    expect(logo.element.getAttribute('height')).toBe('32')
+    expect(logo.attributes('width')).toBe('32')
+    expect(logo.attributes('height')).toBe('32')
   })
 
   it('renders Logo Ubook', () => {
@@ -23,7 +23,7 @@ describe('AppHeader', () => {
     const logo = wrapper.find('[alt="Ubook logo"]')
 
     expect(logo.exists()).toBeTruthy()
-    expect(logo.element.getAttribute('width')).toBe('148')
-    expect(logo.element.getAttribute('height')).toBe('32')
+    expect(logo.attributes('width')).toBe('148')
+    expect(logo.attributes('height')).toBe('32')
   })
 })
