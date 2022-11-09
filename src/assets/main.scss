@@ -8,13 +8,23 @@
 }
 
 body {
-  --color-text: #2a2d3b;
+  --sky-blue: #68a0fa;
+  --pale-olive-green: #90d26c;
+  --dark: #2a2d3b;
+  --bluey-grey: #9198af;
+  --light-yellowish-green: #dbff90;
+  --white-two: #fff;
+  --white: #e1e1e1;
+  --very-light-pink: #fff3f2;
+  --pale-grey: #e4e7f4;
+  --black-8: rgba(0, 0, 0, 0.08);
+  --black-8-16: rgba(0, 0, 0, 0.16);
+
+  --color-text: var(--dark);
   --color-primary: #fa7268;
-  --color-secondary: #dbff90;
-  --color-bluey-grey: #9198af;
-  --color-pale-grey: #e4e7f4;
-  --color-light-primary: #fff3f2;
+  --color-secondary: var(--light-yellowish-green);
   --color-background: #f8f9fd;
+
   min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
