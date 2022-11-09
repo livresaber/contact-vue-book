@@ -42,6 +42,7 @@ const props = defineProps({
         <slot name="button"></slot>          
       </div>
     </div>
+    <div class="app-modal__overlay" @click="emit('close')"></div>
   </section>
 </template>
 
@@ -52,11 +53,10 @@ const props = defineProps({
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: 99;
+    z-index: 98;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(#000, .5);
     overflow: hidden;
   }
   .app-modal__container {
@@ -64,18 +64,31 @@ const props = defineProps({
     box-shadow: 0 16px 10px 0 var(--black-8-16);
     background-color: var(--white-two);
     margin: 1rem;
+    z-index: 99;
+  }
+  .app-modal__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9;
+    background: rgba(#000, .4);
   }
   .app-modal__header,
-  .app-modal__content,
   .app-modal__footer {
     padding: 1rem;
-  }
+  }  
   .app-modal__header {
     border-bottom: 2px solid var(--color-border);
+  }
+  .app-modal__content {
+    padding: 1rem 1.5rem;
   }
   .app-modal__footer {
     border-top: 1px solid var(--color-border);
     display: flex;
+    justify-content: flex-end;
     .app-button {
       margin-left: .5rem;
       &:first-of-type { margin-left: 0; }
