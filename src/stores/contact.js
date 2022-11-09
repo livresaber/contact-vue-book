@@ -2,7 +2,8 @@ import { defineStore } from 'pinia'
 
 export const useContactStore = defineStore('contact', {
   state: () => ({
-    list: []
+    list: [],
+    modalNewContact: false,
   }),
   actions: {
     newContact(contact) {
