@@ -3,18 +3,23 @@ import AppHeader from '@/components/AppHeader/index.vue';
 import IconBook from '@/components/Icons/IconBook.vue';
 import IconPlus from '@/components/Icons/IconPlus.vue';
 import AppButton from '@/components/AppButton/index.vue';
+
+import { useContactStore } from '@/stores/contact'
+const contact = useContactStore()
 </script>
 
 <template>
   <section class="page-home">
     <AppHeader />  
     <main>
-      <IconBook class="icon-book" />
-      <p>Nenhum contato foi criado ainda.</p>
-      <AppButton class="create-contact" ariaLabel="Botão para criar novo contato" type="secondary">
-        <IconPlus />
-        Criar contato
-      </AppButton>
+      <template v-if="contact.list.length == 0">
+        <IconBook class="icon-book" />
+        <p>Nenhum contato foi criado ainda.</p>
+        <AppButton class="create-contact" ariaLabel="Botão para criar novo contato" type="secondary">
+          <IconPlus />
+          Criar contato
+        </AppButton>
+      </template>
     </main>
   </section>
 </template>
