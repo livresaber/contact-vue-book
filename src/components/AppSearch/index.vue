@@ -29,10 +29,10 @@ import IconSearch from '@/components/Icons/IconSearch.vue';
   }
   .app-search__field {
     font-size: 1rem;
-    color: var(--color-bluey-grey);
+    color: var(--bluey-grey);
     width: 100%;
     height: 2rem;
-    background: var(--color-pale-grey);
+    background: var(--pale-grey);
     padding: 0.438rem 0.5rem 0.375rem;
     border: 0;
     border-radius: 4px;
