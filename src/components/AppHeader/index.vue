@@ -11,7 +11,13 @@ const contact = useContactStore()
   <header class="app-header">
     <img alt="Vue logo" class="logo-vue" src="@/assets/logo.svg" width="32" height="32" />
     <img alt="Ubook logo" class="logo-book" src="@/assets/ic-logo.svg" width="148" height="32" />
-    <AppButton v-if="contact.list.length > 0" class="create-contact" ariaLabel="Botão para criar novo contato" type="secondary">
+    <AppButton
+      v-if="contact.list.length > 0"
+      class="create-contact"
+      ariaLabel="Botão para criar novo contato"
+      type="secondary"
+      @click="contact.$patch({ modalNewContact: true })"
+    >
       <IconPlus />
       Criar contato
     </AppButton>
