@@ -48,5 +48,9 @@ defineProps({
     &.secondary {
       background: var(--color-secondary);      
     }
+    &:disabled {
+      opacity: .32;
+      cursor: default;
+    }
   }
 </style>
