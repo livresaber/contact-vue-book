@@ -12,6 +12,10 @@ import AppHeader from '@/components/AppHeader/index.vue';
 </template>
 
 <style lang="scss">
+  .page-home {
+    max-width: 90rem;
+    margin: 0 auto;
+  }
   main {
     padding: 1rem;
   }
