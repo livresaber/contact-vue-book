@@ -5,6 +5,7 @@ import IconBook from '@/components/Icons/IconBook.vue';
 import IconPlus from '@/components/Icons/IconPlus.vue';
 import AppButton from '@/components/AppButton/index.vue';
 import AppModal from '@/components/AppModal/index.vue';
+import AppInput from '@/components/AppInput/index.vue';
 
 import { useContactStore } from '@/stores/contact'
 
@@ -51,18 +52,9 @@ const createNewContact = () => {
           @close="contact.$patch({ modalNewContact: false })"
           :show="contact.modalNewContact"
         >
-          <label>
-            Nome: {{ formContact.name }}
-            <input v-model="formContact.name" type="text">
-          </label>
-          <label>
-            E-mail: {{ formContact.email }}
-            <input v-model="formContact.email" type="email">
-          </label>
-          <label>
-            Telefone: {{ formContact.phone }}
-            <input v-model="formContact.phone" type="tel">
-          </label>
+          <AppInput title="Nome:" v-model="formContact.name" type="text" width="24rem" />
+          <AppInput title="E-mail:" v-model="formContact.email" type="email" width="24rem" />
+          <AppInput title="Telefone:" v-model="formContact.phone" type="tel" width="8rem" />
           <template v-slot:button>
             <AppButton
               ariaLabel="Botão para confirmar e criar novo contato"
