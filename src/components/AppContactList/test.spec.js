@@ -10,7 +10,7 @@ describe('AppContactList', () => {
     wrapper = mount(AppContactList, {
       propsData: {
         list: [{
-          name: "Example",
+          name: "Lucas",
           email: "lucasferreiralimax@gmail.com",
           phone: "83 99999 9999"
         }]
@@ -27,14 +27,14 @@ describe('AppContactList', () => {
   })
   it('AppContactList check list content vm', () => {
     wrapper.vm.list.forEach(item => {
-      expect(item.name).toBe('Example')
+      expect(item.name).toBe('Lucas')
       expect(item.email).toBe('lucasferreiralimax@gmail.com')
       expect(item.phone).toBe('83 99999 9999')
     });
   })
   it('AppContactList check render content', () => {
     wrapper.findAll('tbody tr').forEach(item => {
-      expect(item.find('[data-testid="name"]').text()).toBe('Example')
+      expect(item.find('[data-testid="name"]').text()).toBe('Lucas')
       expect(item.find('[data-testid="email"]').text()).toBe('lucasferreiralimax@gmail.com')
       expect(item.find('[data-testid="phone"]').text()).toBe('83 99999 9999')
     });
@@ -45,8 +45,10 @@ describe('AppContactList', () => {
 
     expect(btnEdit.text()).toBe('Editar')
     expect(btnEdit.find('svg').exists()).toBeTruthy()
+    expect(btnEdit.attributes('aria-label')).toBe('Botão para edição do contato Lucas')
 
     expect(btnDelete.text()).toBe('Excluir')
     expect(btnDelete.find('svg').exists()).toBeTruthy()
+    expect(btnDelete.attributes('aria-label')).toBe('Botão para exclusão do contato Lucas')
   })
 })
