@@ -1,8 +1,7 @@
 <script setup>
-import AppButton from '@/components/AppButton/index.vue';
+import AppButton from '@/components/AppButton/index.vue'
 
 const emit = defineEmits(['close'])
-
 const props = defineProps({
   ariaLabel: {
     type: String,
@@ -25,21 +24,22 @@ const props = defineProps({
     v-if="show"
     class="app-modal"
     :class="{ 'show': show }"
-    role="dialog"
     :aria-label="ariaLabel"
+    role="dialog"
   >
     <div class="app-modal__container">
-      <div class="app-modal__header">
-        {{ title }}
-      </div>
+      <div class="app-modal__header">{{ title }}</div>
       <div class="app-modal__content">
         <slot></slot>
       </div>
       <div class="app-modal__footer">
-        <AppButton :ariaLabel="`Botão para cancelar modal ${title}`" @click="emit('close')">
+        <AppButton
+          :ariaLabel="`Botão para cancelar modal ${title}`"
+          @click="emit('close')"
+        >
           Cancelar
         </AppButton>
-        <slot name="button"></slot>          
+        <slot name="button"></slot>
       </div>
     </div>
     <div class="app-modal__overlay" @click="emit('close')"></div>
@@ -78,7 +78,7 @@ const props = defineProps({
   .app-modal__header,
   .app-modal__footer {
     padding: 1rem;
-  }  
+  }
   .app-modal__header {
     border-bottom: 2px solid var(--color-border);
   }

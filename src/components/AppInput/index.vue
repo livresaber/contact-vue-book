@@ -1,6 +1,5 @@
 <script setup>
-let emit = defineEmits(['update:modelValue']);
-
+let emit = defineEmits(['update:modelValue'])
 defineProps({
   title: {
     type: String,
@@ -52,8 +51,15 @@ defineProps({
       >
     </template>
   </label>
-  <div class="app-input__errors" v-for="error of v.$errors" :key="error.$uid">
-    <div class="app-input__error-msg">{{ error.$message }}</div>
+  <div
+    class="app-input__errors"
+    v-for="error of v.$errors"
+    :key="error.$uid"
+    role="alert"
+  >
+    <p class="app-input__error-msg">
+      {{ error.$message }}
+    </p>
   </div>
 </template>
 

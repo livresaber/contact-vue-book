@@ -1,10 +1,9 @@
 <script setup>
-import AppAvatar from '@/components/AppAvatar/index.vue';
-import IconEdit from '@/components/Icons/IconEdit.vue';
-import IconDelete from '@/components/Icons/IconDelete.vue';
+import AppAvatar from '@/components/AppAvatar/index.vue'
+import IconEdit from '@/components/Icons/IconEdit.vue'
+import IconDelete from '@/components/Icons/IconDelete.vue'
 
 const emit = defineEmits(['edit', 'delete'])
-
 defineProps({
   list: {
     type: Array,
@@ -99,9 +98,7 @@ defineProps({
     flex: 1;
   }
 
-  .item__avatar {
-    margin-right: 1rem;
-  }
+  .item__avatar { margin-right: 1rem; }
 
   .item__action {
     padding: 0;
@@ -112,41 +109,26 @@ defineProps({
       background: transparent;
       border: 0;
       font-size: 0;
-      &:hover svg {
-        fill: var(--color-primary);
-      }
-      &:first-of-type {
-        margin-right: .5rem;
-      }
+      &:hover svg { fill: var(--color-primary); }
+      &:first-of-type { margin-right: .5rem; }
       svg { transition: .3s fill; }
     }
   }
 
-  .list-enter-active {
-    animation: enterList 10s;
-  }
-  .list-enter-active,
-  .list-leave-active {
+  .list-enter-active { animation: enterList 10s; }
+  .list-leave-active { animation: none !important; }
+
+  .list-enter-active, .list-leave-active {
     transition: all 0.3s;
   }
-  .list-leave-active {
-    animation: none !important;
-  }
-  .list-enter-from,
-  .list-leave-to {
+  .list-enter-from, .list-leave-to {
     opacity: 0;
     transform: translateX(30px);
   }
 
   @keyframes enterList {
-    0% {
-      background-color: var(--very-light-pink);
-    }
-    80% {
-      background-color: var(--very-light-pink);
-    }
-    100% {
-      background-color: transparent;
-    }
+    0%   { background-color: var(--very-light-pink); }
+    80%  { background-color: var(--very-light-pink); }
+    100% { background-color: transparent;            }
   }
 </style>

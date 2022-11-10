@@ -36,9 +36,7 @@ defineProps({
     display: inline-flex;
     align-items: center;
     min-width: fit-content;
-    svg {
-      margin-right: .5rem;
-    }
+    svg { margin-right: .5rem; }
     &:hover {
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16), 0 0 0 0.5px var(--black-8), inset 0 0 0 0.5px var(--black-8), 0 2px 4px 0.5px var(--black-8-16);
     }
@@ -49,9 +47,7 @@ defineProps({
       background: var(--color-primary);
       color: var(--white-two);
     }
-    &.secondary {
-      background: var(--color-secondary);
-    }
+    &.secondary { background: var(--color-secondary); }
     &:disabled {
       opacity: .32;
       cursor: default;

@@ -1,9 +1,9 @@
 <script setup>
-import AppButton from '@/components/AppButton/index.vue';
-import IconPlus from '@/components/Icons/IconPlus.vue';
-import AppSearch from '@/components/AppSearch/index.vue';
-
+import AppButton from '@/components/AppButton/index.vue'
+import IconPlus from '@/components/Icons/IconPlus.vue'
+import AppSearch from '@/components/AppSearch/index.vue'
 import { useContactStore } from '@/stores/contact'
+
 const contact = useContactStore()
 </script>
 
@@ -15,8 +15,8 @@ const contact = useContactStore()
       v-if="contact.list.length > 0"
       class="create-contact"
       ariaLabel="Botão para criar novo contato"
-      type="secondary"
       @click="contact.$patch({ modalNewContact: true })"
+      color="secondary"
     >
       <IconPlus />
       Criar contato
@@ -31,10 +31,6 @@ const contact = useContactStore()
     display: flex;
     .create-contact { margin: 0 1.5rem; }
   }
-  .logo-vue {
-    margin-right: 1rem;
-  }
-  .logo-book {
-    margin-right: 1rem;
-  }
+  .logo-vue { margin-right: 1rem; }
+  .logo-book { margin-right: 1rem; }
 </style>

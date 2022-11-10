@@ -1,7 +1,7 @@
 <script setup>
-import AppButton from '@/components/AppButton/index.vue';
-import IconBook from '@/components/Icons/IconBook.vue';
-import IconPlus from '@/components/Icons/IconPlus.vue';
+import AppButton from '@/components/AppButton/index.vue'
+import IconBook from '@/components/Icons/IconBook.vue'
+import IconPlus from '@/components/Icons/IconPlus.vue'
 
 import { useContactStore } from '@/stores/contact'
 
@@ -14,8 +14,8 @@ const contact = useContactStore()
   <AppButton
     class="create-contact"
     ariaLabel="Botão para criar novo contato"
-    type="secondary"
     @click="contact.$patch({ modalNewContact: true })"
+    color="secondary"
   >
     <IconPlus />
     Criar contato
@@ -28,5 +28,5 @@ const contact = useContactStore()
     border-radius: 20px;
     padding: 0.75rem 1.375rem 0.75rem 1rem;
     margin-top: 1.5rem;
-  } 
+  }
 </style>

@@ -1,36 +1,32 @@
 <script setup>
-import { ref } from 'vue';
-import IconSearch from '@/components/Icons/IconSearch.vue';
-
+import { ref } from 'vue'
+import IconSearch from '@/components/Icons/IconSearch.vue'
 import { useContactStore } from '@/stores/contact'
+
 const contact = useContactStore()
-
 const searchInput = ref('')
-
 const search = () => {
-  if (searchInput.value.length > 0) {
-    contact.setFilter(contact.getListByName(searchInput))
-  } else {
-    contact.resetFilter()
-  }
+  searchInput.value.length > 0
+    ? contact.setFilter(contact.getListByName(searchInput))
+    : contact.resetFilter()
 }
 </script>
 
 <template>
   <section class="app-search">
     <input
+      aria-label="Campo de pesquisa para buscar contato"
       class="app-search__field"
-      type="text"
       placeholder="Buscar..."
       v-model="searchInput"
       @input="search"
-      aria-label="Campo de pesquisa para buscar contato"
+      type="text"
     >
     <button
-      class="app-search__button"
-      type="button"
       aria-label="Botão para buscar contato no campo de pesquisa"
+      class="app-search__button"
       @click="search"
+      type="button"
     >
       <IconSearch class="icon" />
       Buscar contato
@@ -67,8 +63,6 @@ const search = () => {
     background: transparent;
     border: 0;
     font-size: 0;
-    &:hover svg {
-      fill: var(--color-primary);
-    }
+    &:hover svg { fill: var(--color-primary); }
   }
 </style>
