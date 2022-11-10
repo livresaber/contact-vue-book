@@ -68,7 +68,7 @@ const closeEditContact = () => {
     <template v-slot:button>
       <AppButton
         :ariaLabel="`Botão para confirmar a edição do contato ${v.name.$model}`"
-        :disabled="!v.name.$model || !v.email.$model || !v.phone.$model"
+        :disabled="v.name.$invalid || v.email.$invalid || v.phone.$invalid"
         @click="handleEditContact(contact.modalEditContact.contact)"
         color="primary"
       >

@@ -72,7 +72,7 @@ const closeNewContact = () => {
     <template v-slot:button>
       <AppButton
         :ariaLabel="`Botão para confirmar e salvar novo contato ${v.name.$model}`"
-        :disabled="!v.name.$model || !v.email.$model || !v.phone.$model"
+        :disabled="v.name.$invalid || v.email.$invalid || v.phone.$invalid"
         @click="createNewContact"
         color="primary"
       >
