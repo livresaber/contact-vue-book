@@ -1,5 +1,19 @@
 <script setup>
+import { ref } from 'vue';
 import IconSearch from '@/components/Icons/IconSearch.vue';
+
+import { useContactStore } from '@/stores/contact'
+const contact = useContactStore()
+
+const searchInput = ref('')
+
+const search = () => {
+  if (searchInput.value.length > 0) {
+    contact.setFilter(contact.getListByName(searchInput))
+  } else {
+    contact.resetFilter()
+  }
+}
 </script>
 
 <template>
@@ -8,12 +22,15 @@ import IconSearch from '@/components/Icons/IconSearch.vue';
       class="app-search__field"
       type="text"
       placeholder="Buscar..."
+      v-model="searchInput"
+      @input="search"
       aria-label="Campo de pesquisa para buscar contato"
     >
     <button
       class="app-search__button"
       type="button"
       aria-label="Botão para buscar contato no campo de pesquisa"
+      @click="search"
     >
       <IconSearch class="icon" />
       Buscar contato
