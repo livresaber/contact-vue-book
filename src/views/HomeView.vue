@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { v4 as uuidv4 } from 'uuid';
 import AppHeader from '@/components/AppHeader/index.vue';
 import AppButton from '@/components/AppButton/index.vue';
 import AppModal from '@/components/AppModal/index.vue';
@@ -7,7 +8,7 @@ import AppInput from '@/components/AppInput/index.vue';
 import AppContactList from '@/components/AppContactList/index.vue';
 import AppContactListEmpty from '@/components/AppContactListEmpty/index.vue';
 
-import { v4 as uuidv4 } from 'uuid';
+import { generateDarkColorHex } from '@/utils'
 import { useContactStore } from '@/stores/contact'
 
 const contact = useContactStore()
@@ -16,7 +17,11 @@ const formContact = ref({ name: '', email: '', phone: '' })
 const resetForm = () => formContact.value = { name: '', email: '', phone: '' };
 
 const createNewContact = () => {
-  contact.newContact({ id: uuidv4(), ...formContact.value })
+  contact.newContact({
+    id: uuidv4(),
+    color: generateDarkColorHex(),
+    ...formContact.value
+  })
   contact.$patch({ modalNewContact: false })
   resetForm()
 }
@@ -36,7 +41,11 @@ const closeEditContact = () => {
 }
 
 const handleEditContact = (item) => {
-  contact.editContact({ id: item.id, ...formContact.value })
+  contact.editContact({
+    id: item.id,
+    color: item.color,
+    ...formContact.value
+  })
   contact.$patch({ modalEditContact: { contact: null, enable: false } })
   resetForm()
 }
@@ -50,12 +59,12 @@ const handleDelContact = (id) => {
 
 <template>
   <section class="page-home">
-    <AppHeader />  
+    <AppHeader />
     <main>
       <template v-if="contact.list.length == 0">
         <AppContactListEmpty />
       </template>
-      
+
       <template v-if="contact.list.length > 0 && contact.filter.length == 0">
         <AppContactList :list="contact.list" @edit="openEditContact" @delete="openDeleteContact" />
       </template>
@@ -75,7 +84,7 @@ const handleDelContact = (id) => {
             <AppInput title="Nome:" v-model="formContact.name" type="text" width="24rem" />
             <AppInput title="E-mail:" v-model="formContact.email" type="email" width="24rem" />
             <AppInput title="Telefone:" v-model="formContact.phone" type="tel" width="8rem" />
-  
+
             <template v-slot:button>
               <AppButton
                 :ariaLabel="`Botão para confirmar e salvar novo contato ${formContact.name}`"
@@ -109,7 +118,7 @@ const handleDelContact = (id) => {
                 Salvar
               </AppButton>
             </template>
-          </AppModal>          
+          </AppModal>
         </template>
 
         <template v-if="contact.modalDeleteContact.enable">
@@ -145,6 +154,6 @@ const handleDelContact = (id) => {
     padding: 1rem;
     display: flex;
     align-items: center;
-    flex-direction: column;       
+    flex-direction: column;
   }
 </style>
