@@ -1,12 +1,11 @@
 <script setup>
 import { ref } from 'vue';
 import AppHeader from '@/components/AppHeader/index.vue';
-import IconBook from '@/components/Icons/IconBook.vue';
-import IconPlus from '@/components/Icons/IconPlus.vue';
 import AppButton from '@/components/AppButton/index.vue';
 import AppModal from '@/components/AppModal/index.vue';
 import AppInput from '@/components/AppInput/index.vue';
 import AppContactList from '@/components/AppContactList/index.vue';
+import AppContactListEmpty from '@/components/AppContactListEmpty/index.vue';
 
 import { v4 as uuidv4 } from 'uuid';
 import { useContactStore } from '@/stores/contact'
@@ -54,27 +53,15 @@ const handleDelContact = (id) => {
     <AppHeader />  
     <main>
       <template v-if="contact.list.length == 0">
-        <IconBook class="icon-book" />
-        <p>Nenhum contato foi criado ainda.</p>
-        <AppButton
-          class="create-contact"
-          ariaLabel="Botão para criar novo contato"
-          type="secondary"
-          @click="contact.$patch({ modalNewContact: true })"
-        >
-          <IconPlus />
-          Criar contato
-        </AppButton>
+        <AppContactListEmpty />
       </template>
       
       <template v-if="contact.list.length > 0 && contact.filter.length == 0">
-        <AppContactList :list="contact.list" @edit="openEditContact" @delete="openDeleteContact"
-        />
+        <AppContactList :list="contact.list" @edit="openEditContact" @delete="openDeleteContact" />
       </template>
 
       <template v-if="contact.filter.length > 0">
-        <AppContactList :list="contact.filter" @edit="openEditContact" @delete="openDeleteContact"
-        />
+        <AppContactList :list="contact.filter" @edit="openEditContact" @delete="openDeleteContact" />
       </template>
 
       <Teleport to="body">
@@ -158,12 +145,6 @@ const handleDelContact = (id) => {
     padding: 1rem;
     display: flex;
     align-items: center;
-    flex-direction: column;
-    .icon-book { margin: 6rem 0 1.5rem; }
-    .create-contact {
-      border-radius: 20px;
-      padding: 0.75rem 1.375rem 0.75rem 1rem;
-      margin-top: 1.5rem;
-    }    
+    flex-direction: column;       
   }
 </style>
