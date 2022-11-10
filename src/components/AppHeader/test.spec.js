@@ -6,7 +6,6 @@ import AppHeader from './index.vue'
 
 let wrapper;
 
-
 describe('AppHeader', () => {
   beforeEach(() => {
     wrapper = mount(AppHeader, {

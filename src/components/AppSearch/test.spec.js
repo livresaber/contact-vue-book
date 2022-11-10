@@ -1,15 +1,26 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 
+import { createTestingPinia } from '@pinia/testing'
 import { mount } from '@vue/test-utils'
 import AppSearch from './index.vue'
 
+let wrapper;
+
 describe('AppSearch', () => {
+  beforeEach(() => {
+    wrapper = mount(AppSearch, {
+      global: {
+        plugins: [createTestingPinia({
+          createSpy: vi.fn(),
+        })],
+      }
+    })
+  })
+
   it('renders AppSearch a vue instance', () => {
-    const wrapper = mount(AppSearch)
     expect(wrapper.exists()).toBeTruthy()
   })
   it('renders AppSearch Field', () => {
-    const wrapper = mount(AppSearch)
     const field = wrapper.find('.app-search__field')
 
     expect(field).toBeTruthy()
@@ -18,7 +29,6 @@ describe('AppSearch', () => {
   })
 
   it('renders AppSearch Button', () => {
-    const wrapper = mount(AppSearch)
     const btn = wrapper.find('.app-search__button')
 
     expect(btn).toBeTruthy()
