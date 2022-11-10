@@ -4,15 +4,19 @@ defineProps({
     type: String,
     required: true
   },
-  type: String
+  color: String,
+  type: {
+    type: String,
+    default: 'button'
+  }
 })
 </script>
 
 <template>
   <button
     class="app-button"
-    :class="type"
-    type="button"
+    :class="color"
+    :type="type"
     :aria-label="ariaLabel"
   >
     <slot></slot>
@@ -46,7 +50,7 @@ defineProps({
       color: var(--white-two);
     }
     &.secondary {
-      background: var(--color-secondary);      
+      background: var(--color-secondary);
     }
     &:disabled {
       opacity: .32;
