@@ -1,6 +1,9 @@
 <script setup>
-import { ref } from 'vue';
+import { reactive } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
+import { useVuelidate } from '@vuelidate/core'
+import { minLength, required, email, helpers  } from '@vuelidate/validators'
+
 import AppHeader from '@/components/AppHeader/index.vue';
 import AppButton from '@/components/AppButton/index.vue';
 import AppModal from '@/components/AppModal/index.vue';
@@ -13,14 +16,43 @@ import { useContactStore } from '@/stores/contact'
 
 const contact = useContactStore()
 
-const formContact = ref({ name: '', email: '', phone: '' })
-const resetForm = () => formContact.value = { name: '', email: '', phone: '' };
+const formContact = reactive({
+  name: '',
+  email: '',
+  phone: ''
+})
+
+const rulesForm = {
+  name: {
+    required: helpers.withMessage('Campo nome obrigatório', required),
+    minLength: helpers.withMessage('Quantidade mínima duas letras', minLength(2)),
+  },
+  email: {
+    required: helpers.withMessage('Campo e-mail obrigatório', required),
+    email: helpers.withMessage('Escreva um e-mail válido', email)
+  },
+  phone: {
+    required: helpers.withMessage('Campo telefone obrigatório', required),
+    minLength: helpers.withMessage('Digite mais números', minLength(14)),
+  }
+}
+
+const v$ = useVuelidate(rulesForm, formContact)
+
+const resetForm = () => {
+  v$.value.$reset()
+  Object.assign(formContact, {
+    name: '',
+    email: '',
+    phone: ''
+  })
+};
 
 const createNewContact = () => {
   contact.newContact({
     id: uuidv4(),
     color: generateDarkColorHex(),
-    ...formContact.value
+    ...formContact
   })
   contact.$patch({ modalNewContact: false })
   resetForm()
@@ -28,11 +60,16 @@ const createNewContact = () => {
 
 const openEditContact = (item) => {
   contact.$patch({ modalEditContact: { contact: item, enable: true } })
-  formContact.value = { name: item.name, email: item.email, phone: item.phone };
+  Object.assign(formContact, { name: item.name, email: item.email, phone: item.phone })
 }
 
 const openDeleteContact = (item) => {
   contact.$patch({ modalDeleteContact: { contact: item, enable: true } })
+}
+
+const closeNewContact = () => {
+  contact.$patch({ modalNewContact: false })
+  resetForm()
 }
 
 const closeEditContact = () => {
@@ -44,7 +81,7 @@ const handleEditContact = (item) => {
   contact.editContact({
     id: item.id,
     color: item.color,
-    ...formContact.value
+    ...formContact
   })
   contact.$patch({ modalEditContact: { contact: null, enable: false } })
   resetForm()
@@ -78,19 +115,39 @@ const handleDelContact = (id) => {
           <AppModal
             title="Criar novo contato"
             ariaLabel="Modal com formulário para criar novo contato"
-            @close="contact.$patch({ modalNewContact: false })"
+            @close="closeNewContact"
             :show="contact.modalNewContact"
           >
-            <AppInput title="Nome:" v-model="formContact.name" type="text" width="24rem" />
-            <AppInput title="E-mail:" v-model="formContact.email" type="email" width="24rem" />
-            <AppInput title="Telefone:" v-model="formContact.phone" type="tel" width="8rem" />
-
+            <AppInput
+              title="Nome:"
+              name="name"
+              :v="v$.name"
+              v-model="v$.name.$model"
+              type="text"
+              width="24rem"
+            />
+            <AppInput
+              title="E-mail:"
+              name="email"
+              :v="v$.email"
+              v-model="v$.email.$model"
+              type="email"
+              width="24rem"
+            />
+            <AppInput
+              title="Telefone:"
+              name="phone"
+              :v="v$.phone"
+              v-model="v$.phone.$model"
+              type="tel"
+              width="8rem"
+            />
             <template v-slot:button>
               <AppButton
                 :ariaLabel="`Botão para confirmar e salvar novo contato ${formContact.name}`"
                 @click="createNewContact"
                 :disabled="!formContact.name || !formContact.email || !formContact.phone"
-                type="primary"
+                color="primary"
               >
                 Salvar
               </AppButton>
@@ -105,15 +162,36 @@ const handleDelContact = (id) => {
             @close="closeEditContact"
             :show="contact.modalEditContact.enable"
           >
-            <AppInput title="Nome:" v-model="formContact.name" type="text" width="24rem" />
-            <AppInput title="E-mail:" v-model="formContact.email" type="email" width="24rem" />
-            <AppInput title="Telefone:" v-model="formContact.phone" type="tel" width="8rem" />
+            <AppInput
+              title="Nome:"
+              name="name"
+              :v="v$.name"
+              v-model="v$.name.$model"
+              type="text"
+              width="24rem"
+            />
+            <AppInput
+              title="E-mail:"
+              name="email"
+              :v="v$.email"
+              v-model="v$.email.$model"
+              type="email"
+              width="24rem"
+            />
+            <AppInput
+              title="Telefone:"
+              name="phone"
+              :v="v$.phone"
+              v-model="v$.phone.$model"
+              type="tel"
+              width="8rem"
+            />
             <template v-slot:button>
               <AppButton
                 :ariaLabel="`Botão para confirmar a edição do contato ${formContact.name}`"
                 @click="handleEditContact(contact.modalEditContact.contact)"
                 :disabled="!formContact.name || !formContact.email || !formContact.phone"
-                type="primary"
+                color="primary"
               >
                 Salvar
               </AppButton>
@@ -133,7 +211,7 @@ const handleDelContact = (id) => {
               <AppButton
                 :ariaLabel="`Botão para excluir o contato selecionado ${contact.modalDeleteContact.contact.name}`"
                 @click="handleDelContact(contact.modalDeleteContact.contact.id)"
-                type="primary"
+                color="primary"
               >
                 Excluir
               </AppButton>
