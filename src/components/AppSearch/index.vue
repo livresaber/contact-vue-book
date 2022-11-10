@@ -36,7 +36,7 @@ const search = () => {
 
 <style lang="scss">
   .app-search {
-    width: 64.5rem;
+    width: 100%;
     margin-left: auto;
     position: relative;
   }

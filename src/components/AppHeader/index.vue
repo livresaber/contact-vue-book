@@ -1,4 +1,5 @@
 <script setup>
+import AppLogo from '@/components/AppLogo/index.vue'
 import AppButton from '@/components/AppButton/index.vue'
 import IconPlus from '@/components/Icons/IconPlus.vue'
 import AppSearch from '@/components/AppSearch/index.vue'
@@ -9,19 +10,20 @@ const contact = useContactStore()
 
 <template>
   <header class="app-header">
-    <img alt="Vue logo" class="logo-vue" src="@/assets/logo.svg" width="32" height="32" />
-    <img alt="Ubook logo" class="logo-book" src="@/assets/ic-logo.svg" width="148" height="32" />
-    <AppButton
-      v-if="contact.list.length > 0"
-      class="create-contact"
-      ariaLabel="Botão para criar novo contato"
-      @click="contact.$patch({ modalNewContact: true })"
-      color="secondary"
-    >
-      <IconPlus />
-      Criar contato
-    </AppButton>
-    <AppSearch />
+    <AppLogo />
+    <div class="app-header__box">
+      <AppButton
+        v-if="contact.list.length > 0"
+        class="create-contact"
+        ariaLabel="Botão para criar novo contato"
+        @click="contact.$patch({ modalNewContact: true })"
+        color="secondary"
+      >
+        <IconPlus />
+        Criar contato
+      </AppButton>
+      <AppSearch />
+    </div>
   </header>
 </template>
 
@@ -30,7 +32,19 @@ const contact = useContactStore()
     padding: 1rem;
     display: flex;
     .create-contact { margin: 0 1.5rem; }
+    @media (max-width: 640px) {
+      flex-direction: column;
+      .create-contact {
+        margin: 1rem 0;
+        justify-content: center;
+      }
+    }
   }
-  .logo-vue { margin-right: 1rem; }
-  .logo-book { margin-right: 1rem; }
+  .app-header__box {
+    display: flex;
+    width: 100%;
+    @media (max-width: 640px) {
+      flex-direction: column;
+    }
+  }
 </style>
