@@ -1,6 +1,12 @@
 <script setup>
+let emit = defineEmits(['update:modelValue']);
+
 defineProps({
   title: {
+    type: String,
+    required: true
+  },
+  name: {
     type: String,
     required: true
   },
@@ -14,27 +20,46 @@ defineProps({
   },
   width: {
     type: String
+  },
+  v: {
+    type: Object
   }
 })
-
-let emit = defineEmits(['update:modelValue']);
 </script>
 
 <template>
-  <label class="app-input__label" :style="{'width': width }">
+  <label class="app-input__label">
     {{ title }}
-    <input
-      class="app-input__input"
-      @input="emit('update:modelValue', $event.target.value)"
-      :value="modelValue"
-      :type="type"
-    >
+    <template v-if="type === 'tel'">
+      <input
+        :name="name"
+        class="app-input__input"
+        :class="{ 'error': v.$errors.length }"
+        @input="emit('update:modelValue', $event.target.value)"
+        v-maska="['(##) ####-####', '(##) #####-####']"
+        :value="modelValue"
+        :type="type"
+      >
+    </template>
+    <template v-else>
+      <input
+        :name="name"
+        class="app-input__input"
+        :class="{ 'error': v.$errors.length }"
+        @input="emit('update:modelValue', $event.target.value)"
+        :value="modelValue"
+        :type="type"
+      >
+    </template>
   </label>
+  <div class="app-input__errors" v-for="error of v.$errors" :key="error.$uid">
+    <div class="app-input__error-msg">{{ error.$message }}</div>
+  </div>
 </template>
 
 <style lang="scss">
   .app-input__label {
-    width: 100%;
+    width: v-bind(width);
     display: flex;
     flex-direction: column;
     margin: .5rem 0;
@@ -46,5 +71,18 @@ let emit = defineEmits(['update:modelValue']);
     border: solid 1px var(--color-border);
     background-color: var(--white-two);
     padding: .5rem;
+    &.error {
+      border-color: var(--color-red);
+      box-shadow: 0 2px 10px var(--color-red);
+    }
+  }
+  .app-input__errors {
+    width: 100%;
+    display: flex;
+    padding: .3rem;
+  }
+  .app-input__error-msg {
+    font-size: 0.7rem;
+    color: var(--color-red);
   }
 </style>
