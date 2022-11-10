@@ -1,0 +1,32 @@
+<script setup>
+import AppButton from '@/components/AppButton/index.vue';
+import IconBook from '@/components/Icons/IconBook.vue';
+import IconPlus from '@/components/Icons/IconPlus.vue';
+
+import { useContactStore } from '@/stores/contact'
+
+const contact = useContactStore()
+</script>
+
+<template>
+  <IconBook class="icon-book" />
+  <p>Nenhum contato foi criado ainda.</p>
+  <AppButton
+    class="create-contact"
+    ariaLabel="Botão para criar novo contato"
+    type="secondary"
+    @click="contact.$patch({ modalNewContact: true })"
+  >
+    <IconPlus />
+    Criar contato
+  </AppButton>
+</template>
+
+<style lang="scss" scoped>
+  .icon-book { margin: 6rem 0 1.5rem; }
+  .create-contact {
+    border-radius: 20px;
+    padding: 0.75rem 1.375rem 0.75rem 1rem;
+    margin-top: 1.5rem;
+  } 
+</style>
