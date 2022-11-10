@@ -1,4 +1,7 @@
 <script setup>
+import IconEdit from '@/components/Icons/IconEdit.vue';
+import IconDelete from '@/components/Icons/IconDelete.vue';
+
 const emit = defineEmits(['edit', 'delete'])
 
 defineProps({
@@ -18,7 +21,7 @@ defineProps({
         <th>Contatos</th>
         <th>E-mail</th>
         <th>Telefone</th>
-        <th width="140"></th>
+        <th class="actions">Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -27,9 +30,15 @@ defineProps({
         <td data-testid="name">{{ item.name }}</td>
         <td data-testid="email">{{ item.email }}</td>
         <td data-testid="phone">{{ item.phone }}</td>
-        <td>
-          <button @click="emit('edit', item)">Editar</button>
-          <button @click="emit('delete', item)">Excluir</button>
+        <td class="actions">
+          <button class="btn-action" @click="emit('edit', item)">
+            <IconEdit />
+            Editar
+          </button>
+          <button class="btn-action" @click="emit('delete', item)">
+            <IconDelete />
+            Excluir
+          </button>
         </td>
       </tr>
     </tbody>
@@ -37,7 +46,7 @@ defineProps({
 </template>
 
 <style lang="scss">
-  .contact-list { 
+  .contact-list {
     width: 100%;
     overflow: hidden;
     background-color: var(--white-two);
@@ -56,14 +65,31 @@ defineProps({
       border-collapse: collapse;
       border-bottom: 1px solid var(--color-border);
     }
-    tr:last-of-type td {
-      border-bottom: 0;
+    tr {
+      transition: .3s background-color;
+      &:last-of-type td {
+        border-bottom: 0;
+      }
     }
     tbody tr:hover {
       background-color: var(--very-light-pink);
     }
-    td {        
-      padding: .5rem 1rem;
+    td { padding: .5rem 1rem; }
+    .actions {
+      padding: 0;
+      font-size: 0;
+      width: 90px;
+    }
+    .btn-action {
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      font-size: 0;
+      margin: 0 .5rem;
+      &:hover svg {
+        fill: var(--color-primary);
+      }
+      svg { transition: .3s fill; }
     }
   }
 </style>
