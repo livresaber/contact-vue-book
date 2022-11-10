@@ -27,8 +27,8 @@ const openEditContact = (item) => {
   formContact.value = { name: item.name, email: item.email, phone: item.phone };
 }
 
-const openDeleteContact = (id) => {
-  contact.$patch({ modalDeleteContact: { id: id, enable: true } })
+const openDeleteContact = (item) => {
+  contact.$patch({ modalDeleteContact: { contact: item, enable: true } })
 }
 
 const closeEditContact = () => {
@@ -43,7 +43,7 @@ const handleEditContact = (item) => {
 }
 
 const handleDelContact = (id) => {
-  contact.$patch({ modalDeleteContact: { id: null, enable: false } })
+  contact.$patch({ modalDeleteContact: { contact: null, enable: false } })
   contact.deleteContact(id)
   if(contact.filter) contact.resetFilter()
 }
@@ -78,65 +78,72 @@ const handleDelContact = (id) => {
       </template>
 
       <Teleport to="body">
-        <AppModal
-          title="Criar novo contato"
-          ariaLabel="Modal de exemplo"
-          @close="contact.$patch({ modalNewContact: false })"
-          :show="contact.modalNewContact"
-        >
-          <AppInput title="Nome:" v-model="formContact.name" type="text" width="24rem" />
-          <AppInput title="E-mail:" v-model="formContact.email" type="email" width="24rem" />
-          <AppInput title="Telefone:" v-model="formContact.phone" type="tel" width="8rem" />
-          <template v-slot:button>
-            <AppButton
-              ariaLabel="Botão para confirmar e criar novo contato"
-              type="primary"
-              @click="createNewContact"
-              :disabled="!formContact.name || !formContact.email || !formContact.phone"
-            >
-              Salvar
-            </AppButton>
-          </template>
-        </AppModal>
+        <template v-if="contact.modalNewContact">
+          <AppModal
+            title="Criar novo contato"
+            ariaLabel="Modal com formulário para criar novo contato"
+            @close="contact.$patch({ modalNewContact: false })"
+            :show="contact.modalNewContact"
+          >
+            <AppInput title="Nome:" v-model="formContact.name" type="text" width="24rem" />
+            <AppInput title="E-mail:" v-model="formContact.email" type="email" width="24rem" />
+            <AppInput title="Telefone:" v-model="formContact.phone" type="tel" width="8rem" />
+  
+            <template v-slot:button>
+              <AppButton
+                :ariaLabel="`Botão para confirmar e salvar novo contato ${formContact.name}`"
+                @click="createNewContact"
+                :disabled="!formContact.name || !formContact.email || !formContact.phone"
+                type="primary"
+              >
+                Salvar
+              </AppButton>
+            </template>
+          </AppModal>
+        </template>
 
-        <AppModal
-          title="Editar contato"
-          ariaLabel="Modal de exemplo"
-          @close="closeEditContact"
-          :show="contact.modalEditContact.enable"
-        >
-          <AppInput title="Nome:" v-model="formContact.name" type="text" width="24rem" />
-          <AppInput title="E-mail:" v-model="formContact.email" type="email" width="24rem" />
-          <AppInput title="Telefone:" v-model="formContact.phone" type="tel" width="8rem" />
-          <template v-slot:button>
-            <AppButton
-              ariaLabel="Botão para confirmar a edição do contato"
-              type="primary"
-              @click="handleEditContact(contact.modalEditContact.contact)"
-              :disabled="!formContact.name || !formContact.email || !formContact.phone"
-            >
-              Salvar
-            </AppButton>
-          </template>
-        </AppModal>
+        <template v-if="contact.modalEditContact.enable">
+          <AppModal
+            title="Editar contato"
+            :ariaLabel="`Modal com formulário para editar contato ${formContact.name}`"
+            @close="closeEditContact"
+            :show="contact.modalEditContact.enable"
+          >
+            <AppInput title="Nome:" v-model="formContact.name" type="text" width="24rem" />
+            <AppInput title="E-mail:" v-model="formContact.email" type="email" width="24rem" />
+            <AppInput title="Telefone:" v-model="formContact.phone" type="tel" width="8rem" />
+            <template v-slot:button>
+              <AppButton
+                :ariaLabel="`Botão para confirmar a edição do contato ${formContact.name}`"
+                @click="handleEditContact(contact.modalEditContact.contact)"
+                :disabled="!formContact.name || !formContact.email || !formContact.phone"
+                type="primary"
+              >
+                Salvar
+              </AppButton>
+            </template>
+          </AppModal>          
+        </template>
 
-        <AppModal
-          title="Excluir contato"
-          ariaLabel="Modal de exemplo"
-          @close="contact.$patch({ modalDeleteContact: { id: null, enable: false } })"
-          :show="contact.modalDeleteContact.enable"
-        >
-          <p>Deseja realmente excluir o contato?</p>
-          <template v-slot:button>
-            <AppButton
-              ariaLabel="Botão para excluir o contato selecionado"
-              type="primary"
-              @click="handleDelContact(contact.modalDeleteContact.id)"
-            >
-              Excluir
-            </AppButton>
-          </template>
-        </AppModal>
+        <template v-if="contact.modalDeleteContact.enable">
+          <AppModal
+            title="Excluir contato"
+            :ariaLabel="`Modal para confirmar exclusão do contato ${contact.modalDeleteContact.contact.name}`"
+            @close="contact.$patch({ modalDeleteContact: { contact: null, enable: false } })"
+            :show="contact.modalDeleteContact.enable"
+          >
+            <p>Deseja realmente excluir o contato {{ contact.modalDeleteContact.contact.name }}?</p>
+            <template v-slot:button>
+              <AppButton
+                :ariaLabel="`Botão para excluir o contato selecionado ${contact.modalDeleteContact.contact.name}`"
+                @click="handleDelContact(contact.modalDeleteContact.contact.id)"
+                type="primary"
+              >
+                Excluir
+              </AppButton>
+            </template>
+          </AppModal>
+        </template>
       </Teleport>
     </main>
   </section>

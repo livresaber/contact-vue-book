@@ -29,7 +29,7 @@ defineProps({
         <td data-testid="phone">{{ item.phone }}</td>
         <td>
           <button @click="emit('edit', item)">Editar</button>
-          <button @click="emit('delete', item.id)">Excluir</button>
+          <button @click="emit('delete', item)">Excluir</button>
         </td>
       </tr>
     </tbody>

@@ -11,7 +11,7 @@ export const useContactStore = defineStore('contact', {
       enable: false,
     },
     modalDeleteContact: {
-      id: null,
+      contact: null,
       enable: false,
     },
   }),
