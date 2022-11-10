@@ -30,7 +30,6 @@ describe('AppContactListEmpty', () => {
     const btn = wrapper.find('.create-contact')
     expect(btn.exists()).toBeTruthy()
     expect(btn.text()).toBe('Criar contato')
-    expect(btn.attributes('type')).toBe('button')
     expect(btn.attributes('aria-label')).toBe('Botão para criar novo contato')
   })
 })

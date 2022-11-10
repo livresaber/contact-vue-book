@@ -35,7 +35,7 @@ describe('AppButton', () => {
     const wrapper = mount(AppButton, {
       propsData: {
         ariaLabel: 'Botão de exemplo aria label primary',
-        type: 'primary'
+        color: 'primary'
       },
       slots: {
         default: [IconPlus, { template: 'Botão de exemplo primary' }],
@@ -44,7 +44,7 @@ describe('AppButton', () => {
     expect(wrapper).toBeTruthy()
     expect(wrapper.find('svg.icon')).toBeTruthy()
     expect(wrapper.text()).toBe('Botão de exemplo primary')
-    expect(wrapper.props().type).toBe('primary')
+    expect(wrapper.props().color).toBe('primary')
     expect(wrapper.attributes('type')).toBe('button')
     expect(wrapper.classes('primary')).toBeTruthy()
     expect(wrapper.props().ariaLabel).toBe('Botão de exemplo aria label primary')
@@ -54,16 +54,16 @@ describe('AppButton', () => {
     const wrapper = mount(AppButton, {
       propsData: {
         ariaLabel: 'Botão de exemplo aria label secondary',
-        type: 'secondary'
+        color: 'secondary'
       },
-      slots: { 
+      slots: {
         default: [IconPlus, { template: 'Botão de exemplo secondary' }],
       }
     })
     expect(wrapper).toBeTruthy()
     expect(wrapper.find('svg.icon')).toBeTruthy()
     expect(wrapper.text()).toBe('Botão de exemplo secondary')
-    expect(wrapper.props().type).toBe('secondary')
+    expect(wrapper.props().color).toBe('secondary')
     expect(wrapper.attributes('type')).toBe('button')
     expect(wrapper.classes('secondary')).toBeTruthy()
     expect(wrapper.props().ariaLabel).toBe('Botão de exemplo aria label secondary')
