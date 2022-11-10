@@ -14,23 +14,20 @@ defineProps({
 </script>
 
 <template>
-  <table class="contact-list">
-    <thead>
-      <tr>
-        <th width="30"></th>
-        <th>Contatos</th>
-        <th>E-mail</th>
-        <th>Telefone</th>
-        <th class="actions">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="item of list">
-        <td></td>
-        <td data-testid="name">{{ item.name }}</td>
-        <td data-testid="email">{{ item.email }}</td>
-        <td data-testid="phone">{{ item.phone }}</td>
-        <td class="actions">
+  <section class="contact-list">
+    <div class="contact-list__header">
+      <span>Contatos</span>
+      <span>E-mail</span>
+      <span>Telefone</span>
+      <span></span>
+    </div>
+    <TransitionGroup class="contact-list__content" name="list" tag="ul">
+      <li class="contact-list__item" v-for="item of list" :key="item.id">
+        <!-- <div class="item__avatar">{{ item.name }}</div> -->
+        <span class="item__title">{{ item.name }}</span>
+        <span class="item__email">{{ item.email }}</span>
+        <span class="item__phone">{{ item.phone }}</span>
+        <div class="item__action">
           <button
             class="btn-action edit"
             @click="emit('edit', item)"
@@ -47,57 +44,95 @@ defineProps({
             <IconDelete />
             Excluir
           </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </div>
+      </li>
+    </TransitionGroup>
+  </section>
 </template>
 
 <style lang="scss">
   .contact-list {
     width: 100%;
-    overflow: hidden;
+    border-radius: 4px;
     background-color: var(--white-two);
-    border-collapse: separate;
     border: solid var(--color-border) 1px;
-    -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-            border-radius: 4px;
-    th {
-      color: var(--bluey-grey);
+  }
+
+  .contact-list__header {
+    padding: 1rem 1rem .3rem;
+    display: flex;
+    span {
       font-size: 0.813rem;
-      padding: 1rem 1rem .5rem;
-    }
-    th, td {
-      text-align: left;
-      border-collapse: collapse;
-      border-bottom: 1px solid var(--color-border);
-    }
-    tr {
-      transition: .3s background-color;
-      &:last-of-type td {
-        border-bottom: 0;
+      color: var(--bluey-grey);
+      flex: 1;
+      &:last-of-type {
+        width: 64px;
+        padding: 0;
+        font-size: 0;
+        flex: none;
       }
     }
-    tbody tr:hover {
+  }
+
+  .contact-list__item {
+    padding: .5rem 1rem;
+    font-size: 0.875rem;
+    display: flex;
+    border-top: solid 1px var(--white);
+    transition: .3s all;
+    &:hover {
       background-color: var(--very-light-pink);
     }
-    td { padding: .5rem 1rem; }
-    .actions {
-      padding: 0;
-      font-size: 0;
-      width: 90px;
-    }
+  }
+
+  .item__title, .item__email, .item__phone {
+    flex: 1;
+  }
+
+  .item__action {
+    padding: 0;
+    font-size: 0;
+    width: 64px;
     .btn-action {
       cursor: pointer;
       background: transparent;
       border: 0;
       font-size: 0;
-      margin: 0 .5rem;
       &:hover svg {
         fill: var(--color-primary);
       }
+      &:first-of-type {
+        margin-right: .5rem;
+      }
       svg { transition: .3s fill; }
+    }
+  }
+
+  .list-enter-active {
+    animation: enterList 10s;
+  }
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.3s;
+  }
+  .list-leave-active {
+    animation: none !important;
+  }
+  .list-enter-from,
+  .list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  @keyframes enterList {
+    0% {
+      background-color: var(--very-light-pink);
+    }
+    80% {
+      background-color: var(--very-light-pink);
+    }
+    100% {
+      background-color: transparent;
     }
   }
 </style>
