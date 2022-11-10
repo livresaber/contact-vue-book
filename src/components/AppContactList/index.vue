@@ -24,9 +24,9 @@ defineProps({
     <tbody>
       <tr v-for="item of list">
         <td></td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.email }}</td>
-        <td>{{ item.phone }}</td>
+        <td data-testid="name">{{ item.name }}</td>
+        <td data-testid="email">{{ item.email }}</td>
+        <td data-testid="phone">{{ item.phone }}</td>
         <td>
           <button @click="emit('edit', item)">Editar</button>
           <button @click="emit('delete', item.id)">Excluir</button>
