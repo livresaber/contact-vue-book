@@ -1,4 +1,5 @@
 <script setup>
+import AppAvatar from '@/components/AppAvatar/index.vue';
 import IconEdit from '@/components/Icons/IconEdit.vue';
 import IconDelete from '@/components/Icons/IconDelete.vue';
 
@@ -16,6 +17,7 @@ defineProps({
 <template>
   <section class="contact-list">
     <div class="contact-list__header">
+      <span></span>
       <span>Contatos</span>
       <span>E-mail</span>
       <span>Telefone</span>
@@ -23,7 +25,13 @@ defineProps({
     </div>
     <TransitionGroup class="contact-list__content" name="list" tag="ul">
       <li class="contact-list__item" v-for="item of list" :key="item.id">
-        <!-- <div class="item__avatar">{{ item.name }}</div> -->
+        <div class="item__avatar">
+          <AppAvatar
+            :aria-label="`Avatar com a primeira letra do contato ${item.name}`"
+            :name="item.name"
+            :color="item.color"
+          />
+        </div>
         <span class="item__title">{{ item.name }}</span>
         <span class="item__email">{{ item.email }}</span>
         <span class="item__phone">{{ item.phone }}</span>
@@ -65,8 +73,10 @@ defineProps({
       font-size: 0.813rem;
       color: var(--bluey-grey);
       flex: 1;
+      &:first-of-type { width: 32px; }
+      &:last-of-type { width: 58px; }
+      &:first-of-type,
       &:last-of-type {
-        width: 64px;
         padding: 0;
         font-size: 0;
         flex: none;
@@ -75,7 +85,7 @@ defineProps({
   }
 
   .contact-list__item {
-    padding: .5rem 1rem;
+    padding: .5rem;
     font-size: 0.875rem;
     display: flex;
     border-top: solid 1px var(--white);
@@ -87,6 +97,10 @@ defineProps({
 
   .item__title, .item__email, .item__phone {
     flex: 1;
+  }
+
+  .item__avatar {
+    margin-right: 1rem;
   }
 
   .item__action {
