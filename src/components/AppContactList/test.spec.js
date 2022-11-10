@@ -12,7 +12,8 @@ describe('AppContactList', () => {
         list: [{
           name: "Lucas",
           email: "lucasferreiralimax@gmail.com",
-          phone: "83 99999 9999"
+          phone: "83 99999 9999",
+          color: '#000'
         }]
       }
     })
