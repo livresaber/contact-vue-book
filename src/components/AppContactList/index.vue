@@ -31,11 +31,11 @@ defineProps({
         <td data-testid="email">{{ item.email }}</td>
         <td data-testid="phone">{{ item.phone }}</td>
         <td class="actions">
-          <button class="btn-action" @click="emit('edit', item)">
+          <button class="btn-action edit" @click="emit('edit', item)">
             <IconEdit />
             Editar
           </button>
-          <button class="btn-action" @click="emit('delete', item)">
+          <button class="btn-action delete" @click="emit('delete', item)">
             <IconDelete />
             Excluir
           </button>

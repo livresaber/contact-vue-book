@@ -39,4 +39,14 @@ describe('AppContactList', () => {
       expect(item.find('[data-testid="phone"]').text()).toBe('83 99999 9999')
     });
   })
+  it('renders AppContactList action buttons', () => {
+    const btnEdit = wrapper.find('.btn-action.edit')
+    const btnDelete = wrapper.find('.btn-action.delete')
+
+    expect(btnEdit.text()).toBe('Editar')
+    expect(btnEdit.find('svg').exists()).toBeTruthy()
+
+    expect(btnDelete.text()).toBe('Excluir')
+    expect(btnDelete.find('svg').exists()).toBeTruthy()
+  })
 })
