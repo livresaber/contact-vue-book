@@ -89,9 +89,8 @@ defineProps({
     display: flex;
     border-top: solid 1px var(--white);
     transition: .3s all;
-    &:hover {
-      background-color: var(--very-light-pink);
-    }
+    &:hover { background-color: var(--very-light-pink); }
+    &:last-of-type { border-radius: 0 0 4px 4px; }
   }
 
   .item__title, .item__email, .item__phone {
