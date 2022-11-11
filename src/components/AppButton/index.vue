@@ -8,23 +8,44 @@ defineProps({
   type: {
     type: String,
     default: 'button'
+  },
+  link: {
+    type: String,
+  },
+  target: {
+    type: String,
   }
 })
 </script>
 
 <template>
-  <button
-    class="app-button"
-    :class="color"
-    :type="type"
-    :aria-label="ariaLabel"
-  >
-    <slot></slot>
-  </button>
+  <template v-if="link">
+    <a
+      v-if="link"
+      class="app-button-link"
+      :class="color"
+      :aria-label="ariaLabel"
+      :href="link"
+      :target="target"
+    >
+      <slot></slot>
+    </a>
+  </template>
+  <template v-else>
+    <button
+      class="app-button"
+      :class="color"
+      :type="type"
+      :aria-label="ariaLabel"
+    >
+      <slot></slot>
+    </button>
+  </template>
 </template>
 
 <style lang="scss">
-  .app-button {
+  .app-button,
+  .app-button-link {
     border: 0;
     border-radius: 16px;
     color: var(--color-primary);
