@@ -2,7 +2,7 @@
 import AppButton from '@/components/AppButton/index.vue'
 
 const emit = defineEmits(['close'])
-const props = defineProps({
+defineProps({
   ariaLabel: {
     type: String,
     required: true
