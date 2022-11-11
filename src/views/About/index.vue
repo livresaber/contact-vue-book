@@ -14,7 +14,7 @@ const devDependencies = pkg.devDependencies;
     <main>
       <h2>Sobre o projeto</h2>
       <p>App Vue desenvolvido com Vue 3 com cobertura de testes unitários com Vitest</p>
-      <p>Design responsivo e adpativativo com descrições aria label nos componentes e botões</p>
+      <p>Design responsivo e adaptativo com descrições aria label nos componentes e botões</p>
       <p>Animações na interface utilizando CSS e Transition do Vue</p>
       <p>A versão atual do projeto é <b>v{{ version }}</b></p>
       <br />
