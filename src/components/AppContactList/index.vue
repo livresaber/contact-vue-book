@@ -101,7 +101,10 @@ defineProps({
         background-color: var(--very-light-pink);
       }
     }
-    &:first-of-type { border-radius: 0 0 4px 4px; }
+    &:first-of-type {
+      border-radius: 0 0 4px 4px;
+      border-top: 0;
+    }
     &:last-of-type { border-radius: 0 0 4px 4px; }
     @media (max-width: 640px) {
       flex-direction: column;

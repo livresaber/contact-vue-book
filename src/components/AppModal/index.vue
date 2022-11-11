@@ -65,6 +65,7 @@ const props = defineProps({
     background-color: var(--white-two);
     margin: 1rem;
     z-index: 99;
+    transition: .3s transform;
   }
   .app-modal__overlay {
     position: fixed;
@@ -74,6 +75,7 @@ const props = defineProps({
     bottom: 0;
     z-index: 9;
     background: rgba(#000, .4);
+    backdrop-filter: blur(3px);
   }
   .app-modal__header,
   .app-modal__footer {

@@ -51,31 +51,55 @@ const openDeleteContact = (item) => {
         @delete="openDeleteContact"
       />
       <Teleport to="body">
-        <ModalCreate
-          v-if="contact.modalNewContact"
-          @reset="resetForm"
-          :v="v$"
-        />
-        <ModalEdit
+        <TransitionGroup name="modal">
+          <ModalCreate
+            v-if="contact.modalNewContact"
+            @reset="resetForm"
+            :v="v$"
+          />
+          <ModalEdit
           v-if="contact.modalEditContact.enable"
           @reset="resetForm"
           :v="v$"
-        />
-        <ModalDelete v-if="contact.modalDeleteContact.enable" />
+          />
+          <ModalDelete v-if="contact.modalDeleteContact.enable" />
+        </TransitionGroup>
       </Teleport>
     </main>
   </section>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .page-home {
     max-width: 90rem;
     margin: 0 auto;
+    main {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
   }
-  main {
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  .modal-enter-active,
+  .modal-leave-active {
+    transition: opacity .3s ease;
+  }
+  .modal-enter-active {
+    .app-modal__container {
+      transform: scale(0);
+    }
+  }
+  .modal-leave-active {
+    .app-modal__container {
+      transform: scale(1);
+    }
+  }
+  .modal-enter-from,
+  .modal-leave-to {
+    opacity: 0;
+    .app-modal__container {
+      transform: scale(0);
+      transition: .3s transform;
+    }
   }
 </style>
