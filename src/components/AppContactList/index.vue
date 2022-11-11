@@ -157,7 +157,15 @@ defineProps({
     }
   }
 
-  .list-enter-active { animation: enterList 10s; }
+  .list-enter-active {
+    animation: enterList 10s;
+    .item__title,
+    .item__email,
+    .item__phone,
+    .item__action {
+      animation: enterList 10s;
+    }
+  }
   .list-leave-active { animation: none !important; }
 
   .list-enter-active, .list-leave-active {
