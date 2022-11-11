@@ -7,11 +7,11 @@ export const useContactStore = defineStore('contact', {
     filter: [],
     modalNewContact: false,
     modalEditContact: {
-      contact: null,
+      item: null,
       enable: false,
     },
     modalDeleteContact: {
-      contact: null,
+      item: null,
       enable: false,
     },
   }),

@@ -1,6 +1,12 @@
 import { minLength, required, email, helpers  } from '@vuelidate/validators'
 
-const rulesForm = {
+const structure = {
+  name: '',
+  email: '',
+  phone: ''
+}
+
+const validation = {
   name: {
     required: helpers.withMessage('Campo nome obrigatório', required),
     minLength: helpers.withMessage('Quantidade mínima duas letras', minLength(2)),
@@ -15,4 +21,4 @@ const rulesForm = {
   }
 }
 
-export default rulesForm
+export default { validation, structure }

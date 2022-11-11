@@ -1,35 +1,20 @@
 <script setup>
-import { reactive } from 'vue'
-import { useVuelidate } from '@vuelidate/core'
-
 import AppHeader from '@/components/AppHeader/index.vue'
 import AppContactList from '@/components/AppContactList/index.vue'
 import AppContactListEmpty from '@/components/AppContactListEmpty/index.vue'
-
-import ModalCreate from '@/modals/ModalCreate.vue'
-import ModalEdit from '@/modals/ModalEdit.vue'
+import ModalForm from '@/modals/ModalForm/index.vue'
 import ModalDelete from '@/modals/ModalDelete.vue'
 
 import { useContactStore } from '@/stores/contact'
-import validation from './validation'
 
 const contact = useContactStore()
-const initialForm = { name: '', email: '', phone: '' }
-const formContact = reactive({ ...initialForm })
-const v$ = useVuelidate(validation, formContact)
-
-const resetForm = () => {
-  Object.assign(formContact, { ...initialForm })
-  v$.value.$reset()
-}
 
 const openEditContact = (item) => {
-  contact.$patch({ modalEditContact: { contact: item, enable: true } })
-  Object.assign(formContact, { name: item.name, email: item.email, phone: item.phone })
+  contact.$patch({ modalEditContact: { item, enable: true } })
 }
 
 const openDeleteContact = (item) => {
-  contact.$patch({ modalDeleteContact: { contact: item, enable: true } })
+  contact.$patch({ modalDeleteContact: { item, enable: true } })
 }
 </script>
 
@@ -52,16 +37,8 @@ const openDeleteContact = (item) => {
       />
       <Teleport to="body">
         <TransitionGroup name="modal">
-          <ModalCreate
-            v-if="contact.modalNewContact"
-            @reset="resetForm"
-            :v="v$"
-          />
-          <ModalEdit
-          v-if="contact.modalEditContact.enable"
-          @reset="resetForm"
-          :v="v$"
-          />
+          <ModalForm type="create" v-if="contact.modalNewContact" />
+          <ModalForm type="edit" v-if="contact.modalEditContact.enable" />
           <ModalDelete v-if="contact.modalDeleteContact.enable" />
         </TransitionGroup>
       </Teleport>
