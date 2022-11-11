@@ -18,6 +18,9 @@ import { RouterLink } from 'vue-router'
     display: flex;
     a {
       display: flex;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      user-select: none;
     }
   }
   .logo-vue { margin-right: 1rem; }
