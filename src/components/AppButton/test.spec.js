@@ -69,4 +69,28 @@ describe('AppButton', () => {
     expect(wrapper.props().ariaLabel).toBe('Botão de exemplo aria label secondary')
     expect(wrapper.attributes('aria-label')).toBe('Botão de exemplo aria label secondary')
   })
+  it('renders AppButton Button Link', () => {
+    const wrapper = mount(AppButton, {
+      propsData: {
+        ariaLabel: 'Botão de exemplo link aria label',
+        color: 'secondary',
+        link: 'https://github.com/lucasferreiralimax',
+        target: '_blank'
+      },
+      slots: {
+        default: [IconPlus, { template: 'Botão de exemplo link' }],
+      }
+    })
+    expect(wrapper).toBeTruthy()
+    expect(wrapper.find('svg.icon')).toBeTruthy()
+    expect(wrapper.text()).toBe('Botão de exemplo link')
+    expect(wrapper.props().color).toBe('secondary')
+    expect(wrapper.props().link).toBe('https://github.com/lucasferreiralimax')
+    expect(wrapper.props().target).toBe('_blank')
+    expect(wrapper.attributes('href')).toBe('https://github.com/lucasferreiralimax')
+    expect(wrapper.attributes('target')).toBe('_blank')
+    expect(wrapper.classes('secondary')).toBeTruthy()
+    expect(wrapper.props().ariaLabel).toBe('Botão de exemplo link aria label')
+    expect(wrapper.attributes('aria-label')).toBe('Botão de exemplo link aria label')
+  })
 })

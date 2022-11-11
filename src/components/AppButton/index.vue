@@ -21,7 +21,6 @@ defineProps({
 <template>
   <template v-if="link">
     <a
-      v-if="link"
       class="app-button-link"
       :class="color"
       :aria-label="ariaLabel"
