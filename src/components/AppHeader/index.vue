@@ -36,6 +36,7 @@ const contact = useContactStore()
       flex-direction: column;
       .create-contact {
         justify-content: center;
+        margin-top: 1rem;
       }
     }
   }
