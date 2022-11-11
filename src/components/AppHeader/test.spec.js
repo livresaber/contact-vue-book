@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 
-import { createTestingPinia } from '@pinia/testing'
 import { mount } from '@vue/test-utils'
 import AppHeader from './index.vue'
 
@@ -9,13 +8,7 @@ describe('AppHeader', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(AppHeader, {
-      global: {
-        plugins: [createTestingPinia({
-          createSpy: vi.fn(),
-        })],
-      }
-    })
+    wrapper = mount(AppHeader)
   })
 
   it('renders AppHeader a vue instance', () => {
@@ -44,11 +37,6 @@ describe('AppHeader with type home', () => {
 
   beforeEach(() => {
     wrapper = mount(AppHeader, {
-      global: {
-        plugins: [createTestingPinia({
-          createSpy: vi.fn(),
-        })],
-      },
       propsData: {
         type: 'home',
       },
@@ -70,13 +58,7 @@ describe('AppHeader without type home', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(AppHeader, {
-      global: {
-        plugins: [createTestingPinia({
-          createSpy: vi.fn(),
-        })],
-      }
-    })
+    wrapper = mount(AppHeader)
   })
 
   it('renders AppHeader a vue instance', () => {

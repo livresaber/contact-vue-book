@@ -1,6 +1,5 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 
-import { createTestingPinia } from '@pinia/testing'
 import { mount } from '@vue/test-utils'
 import AppContactListEmpty from './index.vue'
 
@@ -8,13 +7,7 @@ let wrapper;
 
 describe('AppContactListEmpty', () => {
   beforeEach(() => {
-    wrapper = mount(AppContactListEmpty, {
-      global: {
-        plugins: [createTestingPinia({
-          createSpy: vi.fn(),
-        })],
-      }
-    })
+    wrapper = mount(AppContactListEmpty)
   })
 
   it('renders AppContactListEmpty a vue instance', () => {
