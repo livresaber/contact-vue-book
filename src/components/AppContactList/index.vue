@@ -117,6 +117,8 @@ defineProps({
     transition: .3s all;
     flex: 1;
     background-color: var(--white-two);
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .item__email {
     min-width: 120px;
@@ -126,6 +128,9 @@ defineProps({
   .item__phone {
     min-width: 120px;
     padding-left: .5rem;
+    @media (max-width: 960px) {
+      max-width: 120px;
+    }
   }
 
   @media (max-width: 640px) {
