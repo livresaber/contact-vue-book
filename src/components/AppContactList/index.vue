@@ -17,9 +17,9 @@ defineProps({
   <section class="contact-list">
     <div class="contact-list__header">
       <span></span>
-      <span>Contatos</span>
-      <span>E-mail</span>
-      <span>Telefone</span>
+      <span class="item__title">Contatos</span>
+      <span class="item__email">E-mail</span>
+      <span class="item__phone">Telefone</span>
       <span></span>
     </div>
     <TransitionGroup class="contact-list__content" name="list" tag="ul">
@@ -81,6 +81,9 @@ defineProps({
         flex: none;
       }
     }
+    @media (max-width: 640px) {
+      display: none;
+    }
   }
 
   .contact-list__item {
@@ -89,20 +92,55 @@ defineProps({
     display: flex;
     border-top: solid 1px var(--white);
     transition: .3s all;
-    &:hover { background-color: var(--very-light-pink); }
+    &:hover {
+      background-color: var(--very-light-pink);
+      .item__title,
+      .item__email,
+      .item__phone,
+      .item__action {
+        background-color: var(--very-light-pink);
+      }
+    }
+    &:first-of-type { border-radius: 0 0 4px 4px; }
     &:last-of-type { border-radius: 0 0 4px 4px; }
+    @media (max-width: 640px) {
+      flex-direction: column;
+      flex: auto;
+    }
   }
 
   .item__title, .item__email, .item__phone {
+    transition: .3s all;
     flex: 1;
+    background-color: var(--white-two);
+  }
+  .item__email {
+    min-width: 120px;
+    margin-right: 1rem;
+  }
+  .item__avatar { margin-right: 1rem; }
+  .item__phone {
+    min-width: 120px;
+    padding-left: .5rem;
   }
 
-  .item__avatar { margin-right: 1rem; }
+  @media (max-width: 640px) {
+    .item__title {
+      position: absolute;
+      top: 0.5rem;
+      left: 2.5rem;
+    }
+    .item__email { margin: .5rem 0 0; }
+    .item__avatar { margin-right: 0; }
+    .item__phone { padding: 0; }
+  }
 
   .item__action {
     padding: 0;
     font-size: 0;
     width: 64px;
+    background-color: var(--white-two);
+    transition: .3s all;
     .btn-action {
       cursor: pointer;
       background: transparent;
@@ -111,6 +149,11 @@ defineProps({
       &:hover svg { fill: var(--color-primary); }
       &:first-of-type { margin-right: .5rem; }
       svg { transition: .3s fill; }
+    }
+    @media (max-width: 640px) {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
     }
   }
 

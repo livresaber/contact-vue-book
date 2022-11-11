@@ -40,6 +40,7 @@ const closeNewContact = () => {
 
 <template>
   <AppModal
+    class="modal-create"
     title="Criar novo contato"
     ariaLabel="Modal com formulário para criar novo contato"
     :show="contact.modalNewContact"
@@ -51,7 +52,8 @@ const closeNewContact = () => {
       :v="v.name"
       v-model="v.name.$model"
       type="text"
-      width="24rem"
+      maxlength="25"
+      width="100%"
     />
     <AppInput
       title="E-mail:"
@@ -59,7 +61,8 @@ const closeNewContact = () => {
       :v="v.email"
       v-model="v.email.$model"
       type="email"
-      width="24rem"
+      maxlength="35"
+      width="100%"
     />
     <AppInput
       title="Telefone:"
@@ -81,3 +84,9 @@ const closeNewContact = () => {
     </template>
   </AppModal>
 </template>
+
+<style lang="scss">
+  .app-modal__container {
+    width: 25rem;
+  }
+</style>

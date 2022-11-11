@@ -36,6 +36,7 @@ const closeEditContact = () => {
 
 <template>
   <AppModal
+    class="modal-edit"
     title="Editar contato"
     :ariaLabel="`Modal com formulário para editar contato ${v.name.$model}`"
     :show="contact.modalEditContact.enable"
@@ -47,7 +48,7 @@ const closeEditContact = () => {
       :v="v.name"
       v-model="v.name.$model"
       type="text"
-      width="24rem"
+      width="100%"
     />
     <AppInput
       title="E-mail:"
@@ -55,7 +56,7 @@ const closeEditContact = () => {
       :v="v.email"
       v-model="v.email.$model"
       type="email"
-      width="24rem"
+      width="100%"
     />
     <AppInput
       title="Telefone:"
@@ -77,3 +78,9 @@ const closeEditContact = () => {
     </template>
   </AppModal>
 </template>
+
+<style lang="scss">
+  .app-modal__container {
+    width: 25rem;
+  }
+</style>

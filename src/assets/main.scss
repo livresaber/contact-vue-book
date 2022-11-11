@@ -27,6 +27,7 @@ body {
   --color-background: #f8f9fd;
   --color-border: #c0c3d2;
 
+  min-width: 250px;
   min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
