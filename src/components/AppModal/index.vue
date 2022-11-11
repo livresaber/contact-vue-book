@@ -28,7 +28,9 @@ const props = defineProps({
     role="dialog"
   >
     <div class="app-modal__container">
-      <div class="app-modal__header">{{ title }}</div>
+      <div class="app-modal__header">
+        <h1>{{ title }}</h1>
+      </div>
       <div class="app-modal__content">
         <slot></slot>
       </div>
