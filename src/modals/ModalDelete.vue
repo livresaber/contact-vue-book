@@ -5,8 +5,14 @@ import { useContactStore } from '@/stores/contact'
 
 const contact = useContactStore()
 
-const handleDelContact = (id) => {
+const { item: { name, id }, enable } = contact.modalDeleteContact
+
+const closeModal = () => {
   contact.$patch({ modalDeleteContact: { item: null, enable: false } })
+}
+
+const handleDelContact = (id) => {
+  closeModal()
   contact.deleteContact(id)
   if(contact.filter) contact.resetFilter()
 };
@@ -15,15 +21,15 @@ const handleDelContact = (id) => {
 <template>
   <AppModal
     title="Excluir contato"
-    :ariaLabel="`Modal para confirmar exclusão do contato ${contact.modalDeleteContact.item.name}`"
-    @close="contact.$patch({ modalDeleteContact: { item: null, enable: false } })"
-    :show="contact.modalDeleteContact.enable"
+    :ariaLabel="`Modal para confirmar exclusão do contato ${name}`"
+    @close="closeModal"
+    :show="enable"
   >
-    <p>Deseja realmente excluir o contato {{ contact.modalDeleteContact.item.name }}?</p>
+    <p>Deseja realmente excluir o contato {{ name }}?</p>
     <template v-slot:button>
       <AppButton
-        :ariaLabel="`Botão para excluir o contato selecionado ${contact.modalDeleteContact.item.name}`"
-        @click="handleDelContact(contact.modalDeleteContact.item.id)"
+        :ariaLabel="`Botão para excluir o contato selecionado ${name}`"
+        @click="handleDelContact(id)"
         color="primary"
       >
         Excluir
