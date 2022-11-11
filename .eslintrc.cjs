@@ -18,10 +18,7 @@ module.exports = {
       ]
     }
   ],
-  rules: {
-    'vue/multi-word-component-names': 'off',
-    'vue/no-mutating-props': 'off'
-  },
+  rules: { 'vue/multi-word-component-names': 'off' },
   parserOptions: {
     ecmaVersion: 'latest'
   }

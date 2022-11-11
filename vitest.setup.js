@@ -1,4 +1,5 @@
 import { config } from '@vue/test-utils'
+import { vi } from 'vitest'
 
 import { createTestingPinia } from '@pinia/testing'
 import Maska from 'maska'
