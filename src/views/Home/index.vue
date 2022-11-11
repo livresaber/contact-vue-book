@@ -3,7 +3,7 @@ import AppHeader from '@/components/AppHeader/index.vue'
 import AppContactList from '@/components/AppContactList/index.vue'
 import AppContactListEmpty from '@/components/AppContactListEmpty/index.vue'
 import ModalForm from '@/modals/ModalForm/index.vue'
-import ModalDelete from '@/modals/ModalDelete.vue'
+import ModalDelete from '@/modals/ModalDelete/index.vue'
 
 import { useContactStore } from '@/stores/contact'
 
