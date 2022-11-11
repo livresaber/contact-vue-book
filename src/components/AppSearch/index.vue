@@ -39,6 +39,9 @@ const search = () => {
     width: 100%;
     margin-left: auto;
     position: relative;
+    @media (max-width: 640px) {
+      margin-top: 1rem;
+    }
   }
   .app-search__field {
     font-size: 1rem;
