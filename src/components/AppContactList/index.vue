@@ -68,6 +68,7 @@ defineProps({
   .contact-list__header {
     padding: 1rem 1rem .3rem;
     display: flex;
+    border-bottom: solid var(--color-border) 1px;
     span {
       font-size: 0.813rem;
       color: var(--bluey-grey);
