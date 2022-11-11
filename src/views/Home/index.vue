@@ -35,7 +35,7 @@ const openDeleteContact = (item) => {
 
 <template>
   <section class="page-home">
-    <AppHeader />
+    <AppHeader type="home" />
     <main>
       <AppContactListEmpty v-if="contact.list.length == 0" />
       <AppContactList
@@ -67,7 +67,7 @@ const openDeleteContact = (item) => {
   </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .page-home {
     max-width: 90rem;
     margin: 0 auto;
