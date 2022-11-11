@@ -6,12 +6,18 @@ import AppSearch from '@/components/AppSearch/index.vue'
 import { useContactStore } from '@/stores/contact'
 
 const contact = useContactStore()
+
+defineProps({
+  type: {
+    type: String
+  },
+})
 </script>
 
 <template>
   <header class="app-header">
     <AppLogo />
-    <div class="app-header__box">
+    <div v-if="type == 'home'" class="app-header__box">
       <AppButton
         v-if="contact.list.length > 0"
         class="create-contact"
@@ -36,7 +42,7 @@ const contact = useContactStore()
       flex-direction: column;
       .create-contact {
         justify-content: center;
-        margin-top: 1rem;
+        margin: 1rem 0 0;
       }
     }
   }
