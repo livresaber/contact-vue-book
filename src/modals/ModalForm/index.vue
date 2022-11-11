@@ -39,6 +39,7 @@ const closeModal = () => {
 }
 
 const handleEventContact = () => {
+  const { id, color } = contact.modalEditContact.item
   const formData = {
     name: v$.value.name.$model,
     email: v$.value.email.$model,
@@ -51,11 +52,7 @@ const handleEventContact = () => {
         color: generateDarkColorHex(),
         ...formData
       })
-    : contact.editContact({
-      id: contact.modalEditContact.item.id,
-      color: contact.modalEditContact.item.color,
-      ...formData
-    })
+    : contact.editContact({ id, color, ...formData })
 
   closeModal()
 }
