@@ -16,16 +16,19 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.5",
+    "pinia": "^2.0.23",
     "@vuelidate/core": "^2.0.0",
     "@vuelidate/validators": "^2.0.0",
     "@vueuse/core": "^9.5.0",
     "maska": "^1.5.0",
-    "pinia": "^2.0.23",
-    "uuid": "^9.0.0",
-    "vue": "^3.2.41",
-    "vue-router": "^4.1.5"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "vite": "^3.1.8",
+    "vitest": "^0.24.3",
+    "sass": "^1.56.1",
     "@pinia/testing": "0.0.14",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vue/test-utils": "^2.1.0",
@@ -34,9 +37,6 @@
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-vue": "^9.3.0",
     "jsdom": "^20.0.1",
-    "sass": "^1.56.1",
-    "start-server-and-test": "^1.14.0",
-    "vite": "^3.1.8",
-    "vitest": "^0.24.3"
+    "start-server-and-test": "^1.14.0"
   }
 }
