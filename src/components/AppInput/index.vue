@@ -20,6 +20,9 @@ defineProps({
   width: {
     type: String
   },
+  maxlength: {
+    type: String
+  },
   v: {
     type: Object
   }
@@ -48,6 +51,7 @@ defineProps({
         @input="emit('update:modelValue', $event.target.value)"
         :value="modelValue"
         :type="type"
+        :maxlength="maxlength"
       >
     </template>
   </label>
