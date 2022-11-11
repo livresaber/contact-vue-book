@@ -42,10 +42,13 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--color-primary);
+  color: var(--pale-olive-green);
   transition: 0.4s;
   &:hover {
-    background-color: var(--color-secondary);
-    color: var(--color-secondary);
+    color: var(--dark);
   }
+}
+
+b {
+  font-weight: bold;
 }
