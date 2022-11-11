@@ -47,3 +47,18 @@ describe('Home Page', () => {
     cy.get('[aria-label="Botão para excluir o contato selecionado Criar Art"]').click()
   })
 })
+
+describe('About Page', () => {
+  it('content header', () => {
+    cy.visit('/about')
+    cy.get('[alt="Vue logo"]').should('exist')
+    cy.get('[alt="Ubook logo"]').should('exist')
+    cy.get('[aria-label="Campo de pesquisa para buscar contato"]').should('not.exist')
+  })
+  it('validation author', () => {
+    cy.contains('Lucas Ferreira de Lima é um Front-end que trabalha com Vue, React e Angular')
+    cy.get('[href="https://github.com/livresaber/contact-vue-book"]').should('exist')
+    cy.get('[href="https://lucas-frontend.web.app"]').should('exist')
+  })
+})
+
