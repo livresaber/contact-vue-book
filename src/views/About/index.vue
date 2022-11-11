@@ -50,7 +50,7 @@ const devDependencies = pkg.devDependencies;
         <div>
           <h3>Tecnologias</h3>
           <ul>
-            <li v-for="(version, name) in dependencies">
+            <li v-for="(version, name) in dependencies" :key="name">
               <b>{{ name }}</b> - versão {{ version.replace('^', '') }}
             </li>
           </ul>
@@ -58,7 +58,7 @@ const devDependencies = pkg.devDependencies;
         <div>
           <h3>Dependências de desenvolvimento</h3>
           <ul>
-            <li v-for="(version, name) in devDependencies">
+            <li v-for="(version, name) in devDependencies" :key="name">
               <b>{{ name }}</b> - versão {{ version.replace('^', '') }}
             </li>
           </ul>
