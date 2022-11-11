@@ -63,10 +63,7 @@ const handleEventContact = () => {
 
 <template>
   <AppModal
-    :class="{
-      'modal-create': type == 'create',
-      'modal-edit': type == 'edit'
-    }"
+    :class="`modal-${type}`"
     :title="`${type == 'create' ? 'Criar novo' : 'Editar' } contato`"
     :ariaLabel="`${type == 'create'
       ? 'Modal com formulário para criar novo contato'
