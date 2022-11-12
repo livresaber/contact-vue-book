@@ -72,7 +72,7 @@ const text = {
 const inputs = [
   { title: 'Nome:',     name: 'name',  type: 'text',     width: '100%', maxlength: 25, },
   { title: 'E-mail:',   name: 'email', type: 'email',    width: '100%', maxlength: 35  },
-  { title: 'Telefone:', name: 'phone', type: 'emtelail', width: '8rem'                 }
+  { title: 'Telefone:', name: 'phone', type: 'tel',      width: '8rem'                 }
 ]
 
 </script>
