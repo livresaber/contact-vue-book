@@ -23,7 +23,6 @@ const handleDelContact = (id) => {
     title="Excluir contato"
     :ariaLabel="`Modal para confirmar exclusão do contato ${name}`"
     @close="closeModal"
-    :show="contact.modalDeleteContact.enable"
   >
     <p>Deseja realmente excluir o contato {{ name }}?</p>
     <template v-slot:button>

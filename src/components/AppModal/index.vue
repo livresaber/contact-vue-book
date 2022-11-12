@@ -1,7 +1,10 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import AppButton from '@/components/AppButton/index.vue'
 
+const modal = ref(null)
 const emit = defineEmits(['close'])
+
 defineProps({
   ariaLabel: {
     type: String,
@@ -10,20 +13,23 @@ defineProps({
   title: {
     type: String,
     required: true
-  },
-  show: {
-    type: Boolean,
-    default: false,
-    required: true
   }
+})
+
+onMounted(() => {
+  const firstInput = modal.value.querySelector('input:first-of-type')
+  const firstButton = modal.value.querySelector('button:first-of-type')
+
+  firstInput
+    ? firstInput.focus()
+    : firstButton.focus()
 })
 </script>
 
 <template>
   <section
-    v-if="show"
+    ref="modal"
     class="app-modal"
-    :class="{ 'show': show }"
     :aria-label="ariaLabel"
     role="dialog"
   >
@@ -51,6 +57,11 @@ defineProps({
 <style lang="scss">
   .app-modal {
     position: fixed;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    box-shadow: none;
     top: 0;
     right: 0;
     left: 0;

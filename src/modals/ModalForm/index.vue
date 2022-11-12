@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, onMounted } from 'vue'
+import { reactive, onMounted } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -21,10 +21,8 @@ const props = defineProps({
 const contact = useContactStore()
 const formContact = reactive({ ...rulesForm.structure })
 const v$ = useVuelidate(rulesForm.validation, formContact)
-const showModal = ref(false)
 
 onMounted(() => {
-  showModal.value = props.type == 'create' ? contact.modalNewContact : contact.modalEditContact.enable
   if(props.type == 'edit') Object.assign(formContact, { ...contact.modalEditContact.item })
 })
 
@@ -34,7 +32,6 @@ const closeModal = () => {
     : contact.$patch({ modalEditContact: { item: null, enable: false } })
 
   Object.assign(formContact, { ...rulesForm.structure })
-  showModal.value = false
   v$.value.$reset()
 }
 
@@ -85,11 +82,11 @@ const inputs = [
     :class="`modal-${type}`"
     :title="text[type].title"
     :ariaLabel="text[type].ariaLabelModal"
-    :show="showModal"
     @close="closeModal"
   >
     <AppInput
       v-for="item of inputs"
+      :key="item.name"
       :title="item.title"
       :name="item.name"
       :v="v$[item.name]"
