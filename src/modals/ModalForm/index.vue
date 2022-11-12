@@ -39,66 +39,69 @@ const closeModal = () => {
 }
 
 const handleEventContact = () => {
-  const { id, color } = contact.modalEditContact.item
   const formData = {
     name: v$.value.name.$model,
     email: v$.value.email.$model,
     phone: v$.value.phone.$model
   }
 
-  props.type == 'create'
-    ? contact.newContact({
-        id: uuidv4(),
-        color: generateDarkColorHex(),
-        ...formData
-      })
-    : contact.editContact({ id, color, ...formData })
+  if (props.type == 'create') {
+    contact.newContact({
+      id: uuidv4(),
+      color: generateDarkColorHex(),
+      ...formData
+    })
+  } else {
+    const { id, color } = contact.modalEditContact.item
+    contact.editContact({ id, color, ...formData })
+  }
 
   closeModal()
 }
+
+const text = {
+  create: {
+    title: 'Criar novo contato',
+    ariaLabelModal: 'Modal com formulário para criar novo contato',
+    ariaLabelButton: 'Botão para confirmar e salvar novo contato'
+  },
+  edit: {
+    title: 'Editar contato',
+    ariaLabelModal: 'Modal com formulário para editar contato',
+    ariaLabelButton: 'Botão para confirmar a edição do contato'
+  }
+}
+
+const inputs = [
+  { title: 'Nome:',     name: 'name',  type: 'text',     width: '100%', maxlength: 25, },
+  { title: 'E-mail:',   name: 'email', type: 'email',    width: '100%', maxlength: 35  },
+  { title: 'Telefone:', name: 'phone', type: 'emtelail', width: '8rem'                 }
+]
+
 </script>
 
 <template>
   <AppModal
     :class="`modal-${type}`"
-    :title="`${type == 'create' ? 'Criar novo' : 'Editar' } contato`"
-    :ariaLabel="`${type == 'create'
-      ? 'Modal com formulário para criar novo contato'
-      : `Modal com formulário para editar contato ${v$.name.$model}`
-    }`"
+    :title="text[type].title"
+    :ariaLabel="text[type].ariaLabelModal"
     :show="showModal"
     @close="closeModal"
   >
     <AppInput
-      title="Nome:"
-      name="name"
-      :v="v$.name"
-      v-model="v$.name.$model"
-      type="text"
-      maxlength="25"
-      width="100%"
-    />
-    <AppInput
-      title="E-mail:"
-      name="email"
-      :v="v$.email"
-      v-model="v$.email.$model"
-      type="email"
-      maxlength="35"
-      width="100%"
-    />
-    <AppInput
-      title="Telefone:"
-      name="phone"
-      :v="v$.phone"
-      v-model="v$.phone.$model"
-      type="tel"
-      width="8rem"
+      v-for="item of inputs"
+      :title="item.title"
+      :name="item.name"
+      :v="v$[item.name]"
+      v-model="v$[item.name].$model"
+      :maxlength="item.maxlength ? String(item.maxlength) : null"
+      :type="item.type"
+      :width="item.width"
     />
     <template v-slot:button>
       <AppButton
-        :ariaLabel="`Botão para confirmar ${type == 'create' ? 'e salvar novo' : 'a edição'} contato ${v$.name.$model}`"
-        :disabled="v$.name.$invalid || v$.email.$invalid || v$.phone.$invalid"
+        :ariaLabel="text[type].ariaLabelButton"
+        :disabled="v$.$invalid"
         @click="handleEventContact"
         color="primary"
       >
