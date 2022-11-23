@@ -1,11 +1,6 @@
 <script setup>
 import AppLogo from '@/components/AppLogo/index.vue'
-import AppButton from '@/components/AppButton/index.vue'
-import IconPlus from '@/components/Icons/IconPlus.vue'
 import AppSearch from '@/components/AppSearch/index.vue'
-import { useContactStore } from '@/stores/contact'
-
-const contact = useContactStore()
 
 defineProps({
   type: {
