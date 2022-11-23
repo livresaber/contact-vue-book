@@ -2,7 +2,6 @@ describe('Home Page', () => {
   it('content header', () => {
     cy.visit('/')
     cy.get('[alt="Vue logo"]').should('exist')
-    cy.get('[alt="Ubook logo"]').should('exist')
     cy.get('[aria-label="Campo de pesquisa para buscar contato"]').should('exist')
   })
   it('visits home page valid texts empty', () => {
@@ -17,12 +16,6 @@ describe('Home Page', () => {
     cy.contains('Salvar').click()
 
     cy.contains('Criar contato').click()
-    cy.get('input[name="name"]').type('Elen Souza')
-    cy.get('input[name="email"]').type('elen.souza@clicksign.com')
-    cy.get('input[name="phone"]').type('(11) 94172-8594')
-    cy.contains('Salvar').click()
-
-    cy.contains('Criar contato').click()
     cy.get('input[name="name"]').type('Criar Art')
     cy.get('input[name="email"]').type('contato@criar.art')
     cy.get('input[name="phone"]').type('(82) 99931-9097')
@@ -32,10 +25,6 @@ describe('Home Page', () => {
     cy.contains('Lucas Ferreira de Lima')
     cy.contains('lucasferreiralimax@gmail.com')
     cy.contains('(82) 99931-9097')
-
-    cy.contains('Elen Souza')
-    cy.contains('elen.souza@clicksign.com')
-    cy.contains('(11) 94172-8594')
   })
   it('edit contact', () => {
     cy.get('[aria-label="Botão para edição do contato Lucas Ferreira de Lima"]').click()
@@ -52,7 +41,6 @@ describe('About Page', () => {
   it('content header', () => {
     cy.visit('/about')
     cy.get('[alt="Vue logo"]').should('exist')
-    cy.get('[alt="Ubook logo"]').should('exist')
     cy.get('[aria-label="Campo de pesquisa para buscar contato"]').should('not.exist')
   })
   it('validation author', () => {
