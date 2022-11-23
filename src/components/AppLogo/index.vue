@@ -7,9 +7,6 @@ import { RouterLink } from 'vue-router'
     <RouterLink to="/about">
       <img alt="Vue logo" class="logo-vue" src="@/assets/logo.svg" width="32" height="32" />
     </RouterLink>
-    <RouterLink to="/">
-      <img alt="Ubook logo" class="logo-book" src="@/assets/ic-logo.svg" width="148" height="32" />
-    </RouterLink>
   </div>
 </template>
 
@@ -24,5 +21,4 @@ import { RouterLink } from 'vue-router'
     }
   }
   .logo-vue { margin-right: 1rem; }
-  .logo-book { margin-right: 1rem; }
 </style>
