@@ -22,6 +22,9 @@ defineProps({
   .app-header {
     padding: 1rem;
     display: flex;
+    @media (max-width: 640px) {
+      flex-direction: column;
+    }
   }
   .app-header__box {
     display: flex;
