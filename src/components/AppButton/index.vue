@@ -46,7 +46,7 @@ defineProps({
   .app-button,
   .app-button-link {
     border: 0;
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     color: var(--color-primary);
     cursor: pointer;
     padding: 0.5rem 1rem;
@@ -68,6 +68,10 @@ defineProps({
       color: var(--white-two);
     }
     &.secondary { background: var(--color-secondary); }
+    &.danger {
+      background: var(--color-red);
+      color: var(--white-two);
+    }
     &:disabled {
       opacity: .32;
       cursor: default;

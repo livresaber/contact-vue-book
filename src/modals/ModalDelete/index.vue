@@ -29,7 +29,7 @@ const handleDelContact = (id) => {
       <AppButton
         :ariaLabel="`Botão para excluir o contato selecionado ${name}`"
         @click="handleDelContact(id)"
-        color="primary"
+        color="danger"
       >
         Excluir
       </AppButton>
