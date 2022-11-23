@@ -1,7 +1,13 @@
 <script setup>
+import AppButton from '@/components/AppButton/index.vue'
 import AppAvatar from '@/components/AppAvatar/index.vue'
 import IconEdit from '@/components/Icons/IconEdit.vue'
+import IconPlus from '@/components/Icons/IconPlus.vue'
 import IconDelete from '@/components/Icons/IconDelete.vue'
+
+import { useContactStore } from '@/stores/contact'
+
+const contact = useContactStore()
 
 const emit = defineEmits(['edit', 'delete'])
 defineProps({
@@ -14,14 +20,17 @@ defineProps({
 </script>
 
 <template>
+  <AppButton
+    v-if="contact.list.length > 0"
+    class="create-contact"
+    ariaLabel="Botão para criar novo contato"
+    @click="contact.$patch({ modalNewContact: true })"
+    color="primary"
+  >
+    <IconPlus />
+    Criar contato
+  </AppButton>
   <section class="contact-list">
-    <div class="contact-list__header">
-      <span></span>
-      <span class="item__title">Contatos</span>
-      <span class="item__email">E-mail</span>
-      <span class="item__phone">Telefone</span>
-      <span></span>
-    </div>
     <TransitionGroup class="contact-list__content" name="list" tag="ul">
       <li class="contact-list__item" v-for="item of list" :key="item.id">
         <div class="item__avatar">
@@ -58,9 +67,15 @@ defineProps({
 </template>
 
 <style lang="scss">
+  .create-contact {
+    justify-content: center;
+    margin: 0 0 1rem;
+    width: 100%;
+  }
+
   .contact-list {
     width: 100%;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     background-color: var(--white-two);
     border: solid var(--color-border) 1px;
   }
@@ -71,7 +86,7 @@ defineProps({
     border-bottom: solid var(--color-border) 1px;
     span {
       font-size: 0.813rem;
-      color: var(--bluey-grey);
+      color: var(--color-secondary-light);
       flex: 1;
       &:first-of-type { width: 32px; }
       &:last-of-type { width: 58px; }
@@ -94,19 +109,19 @@ defineProps({
     border-top: solid 1px var(--white);
     transition: .3s all;
     &:hover {
-      background-color: var(--very-light-pink);
+      background-color: var(--color-primary-light);
       .item__title,
       .item__email,
       .item__phone,
       .item__action {
-        background-color: var(--very-light-pink);
+        background-color: var(--color-primary-light);
       }
     }
     &:first-of-type {
-      border-radius: 0 0 4px 4px;
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
       border-top: 0;
     }
-    &:last-of-type { border-radius: 0 0 4px 4px; }
+    &:last-of-type { border-radius: 0 0 var(--border-radius) var(--border-radius); }
     @media (max-width: 640px) {
       flex-direction: column;
       flex: auto;
@@ -186,8 +201,8 @@ defineProps({
   }
 
   @keyframes enterList {
-    0%   { background-color: var(--very-light-pink); }
-    80%  { background-color: var(--very-light-pink); }
+    0%   { background-color: var(--color-primary-light); }
+    80%  { background-color: var(--color-primary-light); }
     100% { background-color: transparent;            }
   }
 </style>
