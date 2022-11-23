@@ -15,7 +15,7 @@ const contact = useContactStore()
     class="create-contact"
     ariaLabel="Botão para criar novo contato"
     @click="contact.$patch({ modalNewContact: true })"
-    color="secondary"
+    color="primary"
   >
     <IconPlus />
     Criar contato
@@ -25,7 +25,7 @@ const contact = useContactStore()
 <style lang="scss" scoped>
   .icon-book { margin: 6rem 0 1.5rem; }
   .create-contact {
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     padding: 0.75rem 1.375rem 0.75rem 1rem;
     margin-top: 1.5rem;
   }

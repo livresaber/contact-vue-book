@@ -73,7 +73,7 @@ onMounted(() => {
     overflow: hidden;
   }
   .app-modal__container {
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     box-shadow: 0 16px 10px 0 var(--black-8-16);
     background-color: var(--white-two);
     margin: 1rem;

@@ -77,7 +77,7 @@ defineProps({
     color: var(--dark);
   }
   .app-input__input {
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     border: solid 1px var(--color-border);
     background-color: var(--white-two);
     padding: .5rem;
