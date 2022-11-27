@@ -28,5 +28,6 @@ const contact = useContactStore()
     border-radius: var(--border-radius);
     padding: 0.75rem 1.375rem 0.75rem 1rem;
     margin-top: 1.5rem;
+    max-width: 150px;
   }
 </style>
