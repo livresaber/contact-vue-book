@@ -77,6 +77,9 @@ const devDependencies = pkg.devDependencies;
     }
     h2 {
       font-size: 2rem;
+      &:first-of-type {
+        margin-top: 0;
+      }
     }
     h3 {
       font-size: 1.5rem;
