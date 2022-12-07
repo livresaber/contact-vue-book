@@ -11,10 +11,10 @@ const toggleMenu = () => menu.value = !menu.value
 </script>
 
 <template>
-  <button class="app-navigation__btn" @click="toggleMenu">
+  <button class="app-navigation__btn" @click="toggleMenu" aria-label="Botão para abrir navegação menu">
     <IconMenu />
   </button>
-  <nav class="app-navigation__content" :class="{ active: menu }" @click="toggleMenu">
+  <nav class="app-navigation__content" :class="{ active: menu }" @click="toggleMenu" role="menu">
     <ul>
       <li>
         <RouterLink to="/">
