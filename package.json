@@ -20,23 +20,23 @@
     "@vuelidate/validators": "^2.0.0",
     "@vueuse/core": "^9.6.0",
     "maska": "^1.5.1",
-    "pinia": "^2.0.26",
+    "pinia": "^2.0.28",
     "uuid": "^9.0.0",
     "vue": "^3.2.45",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "@pinia/testing": "0.0.14",
-    "@vitejs/plugin-vue": "^3.1.2",
+    "@vitejs/plugin-vue": "^4.0.0",
     "@vue/test-utils": "^2.2.6",
     "cypress": "^12.1.0",
-    "eslint": "^8.28.0",
+    "eslint": "^8.29.0",
     "eslint-plugin-cypress": "^2.12.1",
-    "eslint-plugin-vue": "^9.3.0",
+    "eslint-plugin-vue": "^9.8.0",
     "jsdom": "^20.0.3",
     "sass": "^1.56.2",
     "start-server-and-test": "^1.15.2",
-    "vite": "^3.2.4",
+    "vite": "^4.0.1",
     "vitest": "^0.25.8"
   }
 }
