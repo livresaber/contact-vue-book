@@ -84,7 +84,7 @@ defineProps({
 }
 
 .contact-list__item {
-  padding: .5rem;
+  padding: 1rem;
   font-size: 0.875rem;
   display: flex;
   border-top: solid 1px var(--white);
@@ -132,8 +132,8 @@ defineProps({
 @media (max-width: 640px) {
   .item__title {
     position: absolute;
-    top: 0.5rem;
-    left: 2.5rem;
+    top: 1rem;
+    left: 3.2rem;
   }
   .item__email { margin: .5rem 0 0; }
   .item__avatar { margin-right: 0; }
@@ -158,7 +158,7 @@ defineProps({
   }
   @media (max-width: 640px) {
     position: absolute;
-    top: 0.5rem;
+    top: calc(50% - 10px);
     right: 0.5rem;
   }
 }
