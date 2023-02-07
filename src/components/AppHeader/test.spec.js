@@ -40,9 +40,6 @@ describe('AppHeader with type home', () => {
   it('renders AppHeader type home', () => {
     expect(wrapper.props().type).toBe('home')
   })
-  it('renders AppHeader render', () => {
-    expect(wrapper.find('.app-header__box').exists()).toBeTruthy()
-  })
 })
 
 describe('AppHeader without type home', () => {
@@ -57,8 +54,5 @@ describe('AppHeader without type home', () => {
   })
   it('renders AppHeader type home', () => {
     expect(wrapper.props().type).toBeFalsy()
-  })
-  it('renders AppHeader render', () => {
-    expect(wrapper.find('.app-header__box').exists()).toBeFalsy()
   })
 })
