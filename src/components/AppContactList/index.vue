@@ -99,7 +99,7 @@ defineProps({
     }
   }
   &:first-of-type {
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
     border-top: 0;
   }
   &:last-of-type { border-radius: 0 0 var(--border-radius) var(--border-radius); }
