@@ -72,30 +72,20 @@ const devDependencies = pkg.devDependencies;
   .page-about {
     max-width: 50rem;
     margin: 0 auto;
-    h2, h3 {
-      margin-top: 1rem;
-    }
+    h2, h3 { margin-top: 1rem; }
     h2 {
-      font-size: 2rem;
-      &:first-of-type {
-        margin-top: 0;
-      }
-    }
-    h3 {
       font-size: 1.5rem;
+      &:first-of-type { margin-top: 0; }
     }
+    h3 { font-size: 1.2rem; }
     .techs {
       display: flex;
       width: 100%;
-      div {
-        margin-right: 10rem;
-      }
+      div { margin-right: 10rem; }
       @media (max-width: 1040px) {
         flex-direction: column;
       }
     }
   }
-  main {
-    padding: 1rem;
-  }
+  main { padding: .5rem 1rem 1rem; }
 </style>
