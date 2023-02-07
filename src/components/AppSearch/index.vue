@@ -49,13 +49,13 @@ const search = () => {
     font-size: 1rem;
     color: var(--color-secondary-light);
     width: 100%;
-    height: 2rem;
+    height: 2.2rem;
     background: var(--pale-grey);
-    padding: 0.438rem 0.5rem 0.375rem;
-    border: 0;
+    padding: 0.5rem 0.5rem 0.375rem;
+    border: 2px solid var(--color-border);
     border-radius: var(--border-radius);
     &:focus {
-      box-shadow: 0 0 0 2px var(--color-primary);
+      border: 2px solid var(--color-primary);
       outline: none;
     }
   }
