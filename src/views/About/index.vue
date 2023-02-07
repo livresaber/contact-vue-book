@@ -70,7 +70,7 @@ const devDependencies = pkg.devDependencies;
 
 <style lang="scss">
   .page-about {
-    max-width: 90rem;
+    max-width: 50rem;
     margin: 0 auto;
     h2, h3 {
       margin-top: 1rem;

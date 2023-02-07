@@ -48,10 +48,10 @@ const openDeleteContact = (item) => {
 
 <style lang="scss">
   .page-home {
-    max-width: 90rem;
+    max-width: 50rem;
     margin: 0 auto;
     main {
-      padding: 1rem;
+      padding: .5rem 1rem 1rem;
       display: flex;
       align-items: center;
       flex-direction: column;
