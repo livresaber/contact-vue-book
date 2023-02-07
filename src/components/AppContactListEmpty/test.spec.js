@@ -14,7 +14,7 @@ describe('AppContactListEmpty', () => {
     expect(wrapper.exists()).toBeTruthy()
   })
   it('renders AppContactListEmpty text', () => {
-    expect(wrapper.find('p').text()).toBe('Criar uma lista de contatos de forma uma simples')
+    expect(wrapper.find('p').text()).toBe('Crie uma lista de contatos de forma uma simples')
   })
   it('renders AppContactListEmpty icon book', () => {
     expect(wrapper.find('.icon-book').exists()).toBeTruthy()

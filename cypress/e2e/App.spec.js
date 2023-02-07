@@ -5,7 +5,7 @@ describe('Home Page', () => {
     cy.get('[aria-label="Campo de pesquisa para buscar contato"]').should('no.exist')
   })
   it('visits home page valid texts empty', () => {
-    cy.contains('Criar uma lista de contatos de forma uma simples')
+    cy.contains('Crie uma lista de contatos de forma uma simples')
     cy.contains('Novo Contato')
   })
   it('create a contact', () => {
