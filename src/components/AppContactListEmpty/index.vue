@@ -10,7 +10,7 @@ const contact = useContactStore()
 
 <template>
   <IconBook class="icon-book" />
-  <p>Nenhum contato foi criado ainda.</p>
+  <p>Criar uma lista de contatos de forma uma simples</p>
   <AppButton
     class="create-contact"
     ariaLabel="Botão para criar novo contato"

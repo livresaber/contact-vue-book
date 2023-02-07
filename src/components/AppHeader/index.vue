@@ -18,10 +18,12 @@ defineProps({
 <template>
   <header class="app-header">
     <AppLogo />
-    <div v-if="type == 'home'" class="app-header__box">
+    <div
+      v-if="type == 'home' && Boolean(contact.list.length)"
+      class="app-header__box"
+    >
       <AppSearch />
       <AppButton
-        v-if="contact.list.length > 0"
         class="create-contact"
         ariaLabel="Botão para criar novo contato"
         @click="contact.$patch({ modalNewContact: true })"
