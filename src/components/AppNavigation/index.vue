@@ -82,7 +82,23 @@ const toggleMenu = () => menu.value = !menu.value
     border-radius: var(--border-radius);
     min-width: 150px;
     user-select: none;
-    svg { margin-right: 1rem; }
+    cursor: pointer;
+    &.router-link-exact-active {
+      pointer-events: none;
+      cursor: default;
+      background: var(--color-secondary);
+      color: #fff;
+      svg { fill: #fff; }
+    }
+    &:hover {
+      background: var(--color-primary);
+      color: #fff;
+      svg { fill: #fff; }
+    }
+    svg {
+      transition: .3s all;
+      margin-right: 1rem;
+    }
   }
 }
 </style>
