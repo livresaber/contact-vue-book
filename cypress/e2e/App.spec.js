@@ -6,16 +6,16 @@ describe('Home Page', () => {
   })
   it('visits home page valid texts empty', () => {
     cy.contains('Nenhum contato foi criado ainda.')
-    cy.contains('Criar contato')
+    cy.contains('Novo Contato')
   })
   it('create a contact', () => {
-    cy.contains('Criar contato').click()
+    cy.contains('Novo Contato').click()
     cy.get('input[name="name"]').type('Lucas Ferreira de Lima')
     cy.get('input[name="email"]').type('lucasferreiralimax@gmail.com')
     cy.get('input[name="phone"]').type('(82) 99931-9097')
     cy.contains('Salvar').click()
 
-    cy.contains('Criar contato').click()
+    cy.contains('Novo Contato').click()
     cy.get('input[name="name"]').type('Criar Art')
     cy.get('input[name="email"]').type('contato@criar.art')
     cy.get('input[name="phone"]').type('(82) 99931-9097')

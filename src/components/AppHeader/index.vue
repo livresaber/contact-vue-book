@@ -28,7 +28,7 @@ defineProps({
         color="primary"
       >
         <IconPlus />
-        Criar contato
+        Novo Contato
       </AppButton>
     </div>
     <AppNavigation />

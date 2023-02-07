@@ -18,7 +18,7 @@ const contact = useContactStore()
     color="primary"
   >
     <IconPlus />
-    Criar contato
+    Novo Contato
   </AppButton>
 </template>
 
