@@ -44,7 +44,7 @@ defineProps({
     flex-direction: column;
     .app-navigation__btn {
       position: absolute;
-      top: 2rem;
+      top: 1rem;
       right: 1rem;
     }
   }

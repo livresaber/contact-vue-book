@@ -11,7 +11,11 @@ const toggleMenu = () => menu.value = !menu.value
 </script>
 
 <template>
-  <button class="app-navigation__btn" @click="toggleMenu" aria-label="Botão para abrir navegação menu">
+  <button
+    class="app-navigation__btn"
+    @click="toggleMenu"
+    aria-label="Botão para abrir navegação menu"
+  >
     <IconMenu />
   </button>
   <nav class="app-navigation__content" :class="{ active: menu }" @click="toggleMenu" role="menu">
@@ -34,10 +38,18 @@ const toggleMenu = () => menu.value = !menu.value
 
 <style lang="scss">
 .app-navigation__btn {
-  margin-left: 1rem;
+  margin-left: .5rem;
   cursor: pointer;
-  background: transparent;
+  background: #fff;
   border: 0;
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .app-navigation__content {
