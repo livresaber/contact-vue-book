@@ -153,6 +153,7 @@ defineProps({
     font-size: 0;
     &:hover svg { fill: var(--color-primary); }
     &:first-of-type { margin-right: .5rem; }
+    &.delete:hover svg { fill: var(--color-red); }
     svg { transition: .3s fill; }
   }
   @media (max-width: 640px) {
