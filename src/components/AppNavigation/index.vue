@@ -19,7 +19,7 @@ const toggleMenu = () => menu.value = !menu.value
     <IconMenu />
   </button>
   <nav class="app-navigation__content" :class="{ active: menu }" @click="toggleMenu" role="menu">
-    <ul>
+    <ul class="app-navigation__menu-list">
       <li>
         <RouterLink to="/">
           <IconHome />
@@ -61,16 +61,16 @@ const toggleMenu = () => menu.value = !menu.value
   z-index: 99;
   display: none;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   backdrop-filter: blur(5px) brightness(0.5);
+  &.active { display: flex; }
+}
 
-  &.active {
-    display: flex;
-  }
-
-  li:last-of-type a {
-    margin-bottom: 0;
-  }
+.app-navigation__menu-list {
+  flex: 1;
+  padding: 1rem;
+  max-width: 20rem;
+  li:last-of-type a { margin-bottom: 0; }
 
   a {
     width: 100%;
@@ -82,10 +82,7 @@ const toggleMenu = () => menu.value = !menu.value
     border-radius: var(--border-radius);
     min-width: 150px;
     user-select: none;
-
-    svg {
-      margin-right: 1rem;
-    }
+    svg { margin-right: 1rem; }
   }
 }
 </style>
