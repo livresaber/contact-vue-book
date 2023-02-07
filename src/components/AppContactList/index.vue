@@ -2,9 +2,6 @@
 import AppAvatar from '@/components/AppAvatar/index.vue'
 import IconEdit from '@/components/Icons/IconEdit.vue'
 import IconDelete from '@/components/Icons/IconDelete.vue'
-import { useContactStore } from '@/stores/contact'
-
-const contact = useContactStore()
 
 const emit = defineEmits(['edit', 'delete'])
 defineProps({
