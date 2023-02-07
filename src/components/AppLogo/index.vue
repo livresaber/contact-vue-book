@@ -19,9 +19,15 @@ import { RouterLink } from 'vue-router'
       -webkit-tap-highlight-color: transparent;
       -webkit-touch-callout: none;
       user-select: none;
-      font-size: 2rem;
+      font-size: 1.5rem;
       align-items: center;
       margin-right: 1rem;
+      color: var(--color-secondary);
+      text-shadow: 0 -2px #fff;
+      &:hover { color: var(--color-primary); }
+      &.router-link-exact-active {
+        pointer-events: none;
+      }
       span { min-width: max-content; }
     }
   }
