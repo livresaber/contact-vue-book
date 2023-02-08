@@ -78,7 +78,7 @@ const devDependencies = pkg.devDependencies;
   </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .page-about {
     max-width: 50rem;
     margin: 0 auto;
