@@ -175,8 +175,8 @@ defineProps({
   }
   @media (max-width: 640px) {
     position: absolute;
-    top: calc(50% - 10px);
-    right: 0.5rem;
+    top: calc(50% - 20px);
+    right: 1rem;
   }
 }
 
