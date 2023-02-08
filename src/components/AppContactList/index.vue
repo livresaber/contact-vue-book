@@ -35,7 +35,7 @@ defineProps({
           >
             <IconEdit />
             Editar
-          </button>
+          </button>btn-action
           <button
             class="btn-action delete"
             @click="emit('delete', item)"
@@ -88,6 +88,7 @@ defineProps({
   transition: .3s all;
   &:hover {
     background-color: var(--color-primary-light);
+    box-shadow: inset 0 0 10px 10px #fff;
     .item__title,
     .item__email,
     .item__phone,
@@ -111,13 +112,19 @@ defineProps({
   flex: 1;
   background-color: var(--white-two);
   text-overflow: ellipsis;
+  align-items: center;
+  display: flex;
   overflow: hidden;
 }
 .item__email {
   min-width: 120px;
   margin-right: 1rem;
 }
-.item__avatar { margin-right: 1rem; }
+.item__avatar {
+  margin-right: 1rem;
+  align-items: center;
+  display: flex;
+}
 .item__phone {
   min-width: 120px;
   padding-left: .5rem;
@@ -140,17 +147,30 @@ defineProps({
 .item__action {
   padding: 0;
   font-size: 0;
-  width: 64px;
+  width: calc(60px + .5rem);
   background-color: var(--white-two);
   transition: .3s all;
   .btn-action {
     cursor: pointer;
-    background: transparent;
+    background: #eee;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px var(--color-border);
+    width: 30px;
+    height: 30px;
     border: 0;
+    border-radius: 30px;
     font-size: 0;
-    &:hover svg { fill: var(--color-primary); }
+    transition: .3s all;
+    &:hover {
+      background: #fff;
+      box-shadow: 0 0 0 1px #fff, 0 0 0 2px var(--color-primary);
+      svg { fill: var(--color-primary); }
+      &.delete {
+        box-shadow: 0 0 0 1px #fff, 0 0 0 2px var(--color-red);
+        background: #fff;
+        svg { fill: var(--color-red); }
+      }
+    }
     &:first-of-type { margin-right: .5rem; }
-    &.delete:hover svg { fill: var(--color-red); }
     svg { transition: .3s fill; }
   }
   @media (max-width: 640px) {

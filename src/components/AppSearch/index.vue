@@ -49,9 +49,9 @@ const search = () => {
     font-size: 1rem;
     color: var(--color-secondary-light);
     width: 100%;
-    height: 2.2rem;
+    height: 2.7rem;
     background: var(--pale-grey);
-    padding: 0.5rem 0.5rem 0.375rem;
+    padding: 0.5rem 2rem 0.375rem .8rem;
     border: 2px solid var(--color-border);
     border-radius: var(--border-radius);
     &:focus {
@@ -62,7 +62,7 @@ const search = () => {
   .app-search__button {
     position: absolute;
     right: 0;
-    padding: 0.5rem;
+    padding: 1rem;
     cursor: pointer;
     background: transparent;
     border: 0;

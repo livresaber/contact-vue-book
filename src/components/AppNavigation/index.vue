@@ -38,14 +38,15 @@ const toggleMenu = () => menu.value = !menu.value
 
 <style lang="scss">
 .app-navigation__btn {
-  margin-left: .5rem;
+  margin-left: 1rem;
   cursor: pointer;
   background: #fff;
   border: 0;
   border-radius: 100px;
-  width: 50px;
-  height: 50px;
-  min-width: 50px;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 2px var(--color-border);
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
   padding: 0;
   display: flex;
   justify-content: center;

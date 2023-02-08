@@ -42,8 +42,10 @@ defineProps({
   padding: 1rem 1rem .5rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   @media (max-width: 640px) {
     flex-direction: column;
+    align-items: start;
     .app-navigation__btn {
       position: absolute;
       top: 1rem;
