@@ -2,7 +2,7 @@ describe('Home Page', () => {
   it('content header', () => {
     cy.visit('/')
     cy.get('[alt="Vue logo"]').should('exist')
-    cy.get('[aria-label="Campo de pesquisa para buscar contato"]').should('no.exist')
+    cy.get('[aria-label="Campo de pesquisa para buscar contato"]').should('not.exist')
   })
   it('visits home page valid texts empty', () => {
     cy.contains('Crie uma lista de contatos de forma uma simples')
