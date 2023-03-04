@@ -30,4 +30,11 @@ const contact = useContactStore()
     margin-top: 1.5rem;
     max-width: 150px;
   }
+  p {
+    padding: .2rem .5rem;
+    border-radius: 10px;
+    margin: .2rem;
+    background: #fff;
+    display: inline-block;
+  }
 </style>
