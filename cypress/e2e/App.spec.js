@@ -28,7 +28,8 @@ describe('Home Page', () => {
   })
   it('edit contact', () => {
     cy.get('[aria-label="Botão para edição do contato Lucas Ferreira de Lima"]').click()
-    cy.get('input[name="email"]').clear().type('contato@criar.art')
+    cy.get('input[name="email"]').clear()
+    cy.get('input[name="email"]').type('contato@criar.art')
     cy.contains('Salvar').click()
   })
   it('remove contact', () => {
