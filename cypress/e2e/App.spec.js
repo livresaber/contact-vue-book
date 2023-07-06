@@ -49,5 +49,9 @@ describe('About Page', () => {
     cy.get('[href="https://github.com/livresaber/contact-vue-book"]').should('exist')
     cy.get('[href="https://lucas-frontend.web.app"]').should('exist')
   })
+  it('clear data register', () => {
+    cy.visit('/')
+    localStorage.removeItem("my-contact")
+  })
 })
 
