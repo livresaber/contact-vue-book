@@ -35,7 +35,7 @@ defineProps({
           >
             <IconEdit />
             Editar
-          </button>btn-action
+          </button>
           <button
             class="btn-action delete"
             @click="emit('delete', item)"
