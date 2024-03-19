@@ -64,6 +64,7 @@ const toggleMenu = () => menu.value = !menu.value
   justify-content: center;
   align-items: start;
   backdrop-filter: blur(5px) brightness(0.5);
+  -webkit-backdrop-filter: blur(5px) brightness(0.5);
   &.active { display: flex; }
 }
 
