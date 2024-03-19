@@ -57,6 +57,7 @@ defineProps({
 .app-header__box {
   display: flex;
   width: 100%;
+  max-width: 500px;
   @media (max-width: 640px) {
     flex-direction: column;
   }
