@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { vMaska } from "maska"
+import { vMaska } from "maska/vue"
 import App from './App.vue'
 import router from './router'
 import './assets/main.scss'
