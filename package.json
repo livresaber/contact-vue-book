@@ -18,9 +18,9 @@
   "dependencies": {
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
-    "@vueuse/core": "^10.10.1",
+    "@vueuse/core": "^10.11.0",
     "crypto-js": "^4.2.0",
-    "maska": "^3.0.0-beta3",
+    "maska": "^3.0.0-beta4",
     "pinia": "^2.1.7",
     "uuid": "^10.0.0",
     "vue": "^3.4.27",
