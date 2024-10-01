@@ -21,7 +21,7 @@
     "@vueuse/core": "^11.1.0",
     "crypto-js": "^4.2.0",
     "maska": "^3.0.2",
-    "pinia": "^2.2.3",
+    "pinia": "^2.2.4",
     "uuid": "^10.0.0",
     "vue": "^3.5.10",
     "vue-router": "^4.4.5"
@@ -35,7 +35,7 @@
     "eslint": "^9.11.1",
     "eslint-plugin-cypress": "^3.5.0",
     "eslint-plugin-vue": "^9.28.0",
-    "globals": "^15.9.0",
+    "globals": "^15.10.0",
     "jsdom": "^25.0.1",
     "sass": "^1.79.4",
     "start-server-and-test": "^2.0.8",
